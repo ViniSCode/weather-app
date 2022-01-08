@@ -238,7 +238,6 @@ header p{
 }
 
 /* ==== Responsive ====*/
-
 @media (max-width: 1370px){
   html{
     font-size: 80%;
