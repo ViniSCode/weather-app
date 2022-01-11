@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="shortcut icon" href="./assets/cloudy.svg" type="image/x-icon">
   <title>Document</title>
 </head>
 <body>
@@ -24,33 +25,33 @@
 
       <div class="search">
         <label for="search-box">
-          <img src="./search.svg" alt="">
-          <input type="text" id="search-box" name="search-box" placeholder="Search...">
+          <img src="./assets/search.svg" alt="">
+          <input type="text" id="search-box" name="search-box" placeholder="London, UK">
         </label>
       </div>
 
       <main>
         <div class="main-container">
          <div class="weather-preview">
-           <h2>Tuparendi, RS</h2>
+           <h2 id="city-name"></h2>
           <div class="display-temp">
               <div class="temp-left">
                 <div>
-                  <h3 id="indoor">16°C</h3>
-                  <p>Indoor temp</p>
+                  <h3 id="temperature"></h3>
+                  <p>Temperature</p>
                 </div>
                 <div>
-                  <h3 id="humidity">64%</h3>
+                  <h3 id="humidity"></h3>
                   <p>Humidity</p>
                 </div>
               </div>
               <div class="temp-right">
                 <div>
-                  <h3 id="outdoor">24°C</h3>
-                  <p>Outdoor temp</p>
+                  <h3 id="feels-like"></h3>
+                  <p>Feels Like</p>
                 </div>
                 <div>
-                  <h3 id="wind">13 Km/h</h3>
+                  <h3 id="wind"></h3>
                   <p>Wind</p>
                 </div>
               </div>      
@@ -65,7 +66,7 @@
 
 
     <div class="right">
-      <img id="right-img" src="./cloud.svg" alt="">
+      <img id="right-img" src="./assets/cloud.svg" alt="">
 
       <div class="weather">
         <h2>Party Cloudy</h2>
@@ -75,7 +76,7 @@
             <p>Monday</p>
           </div>
           <div class="bottom">
-            <img src="./cloudy.svg">
+            <img src="./assets/cloudy.svg">
             <p>Party Cloudy</p>
             <p>34°C / 23°C</p>
           </div>
@@ -87,7 +88,7 @@
             <p>Tuesday</p>
           </div>
           <div class="bottom">
-            <img src="./rain.svg">
+            <img src="./assets/rain.svg">
             <p>Party Cloudy</p>
             <p>34°C / 23°C</p>
           </div>
@@ -98,7 +99,7 @@
             <p>Wednesday</p>
           </div>
           <div class="bottom">
-            <img src="./clear.svg">
+            <img src="./assets/clear.svg">
             <p>Party Cloudy</p>
             <p>34°C / 23°C</p>
           </div>
@@ -109,7 +110,7 @@
             <p>Thursday</p>
           </div>
           <div class="bottom">
-            <img src="./cloudy.svg">
+            <img src="./assets/cloudy.svg">
             <p>Party Cloudy</p>
             <p>34°C / 23°C</p>
           </div>
@@ -120,7 +121,7 @@
             <p>Friday</p>
           </div>
           <div class="bottom">
-            <img src="./cloudy.svg">
+            <img src="./assets/cloudy.svg">
             <p>Party Cloudy</p>
             <p>34°C / 23°C</p>
           </div>
@@ -131,7 +132,7 @@
             <p>Saturday</p>
           </div>
           <div class="bottom">
-            <img src="./cloudy.svg">
+            <img src="./assets/cloudy.svg">
             <p>Party Cloudy</p>
             <p>34°C / 23°C</p>
           </div>
@@ -142,7 +143,7 @@
             <p>Sunday, July</p>
           </div>
           <div class="bottom">
-            <img src="./rain.svg">
+            <img src="./assets/rain.svg">
             <p>Rain</p>
             <p>34°C / 23°C</p>
           </div>
@@ -150,8 +151,10 @@
       </div>
     </div>
   </div>
+  
+  <script src="api.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="chart.js"></script>
-  <script src="api.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
