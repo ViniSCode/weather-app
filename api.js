@@ -1,4 +1,3 @@
-const apiKey = "f50fb40048cb583c6797ce64964afdbe";
 const search = document.querySelector('#search-box');
 const cityName = document.querySelector('#city-name');
 const temp = document.querySelector('#temperature');
@@ -9,7 +8,7 @@ const humidity = document.querySelector('#humidity')
 //initial weather - London
 async function initialDisplayWeather(){
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=${apiKey}`
+    `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=f50fb40048cb583c6797ce64964afdbe`
   )
   const data = await response.json();
 
@@ -34,7 +33,7 @@ search.addEventListener("keypress", (e) => {
 
 async function searchWeather(city){
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=f50fb40048cb583c6797ce64964afdbe`
   ).then(response => {
     if(!response.ok){
       Swal.fire({
@@ -67,7 +66,7 @@ async function searchWeather(city){
 
 
 async function displayWeather(lat, lon){
-  const data = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${apiKey}`)
+  const data = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=f50fb40048cb583c6797ce64964afdbe`)
   .then(response => response.json()).then(data => {
     return data
   })
@@ -84,7 +83,7 @@ async function displayWeather(lat, lon){
 
 
 function displayForecast(lat, lon){
-  fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${apiKey}`)
+  fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=f50fb40048cb583c6797ce64964afdbe`)
   .then(response => response.json()).then(data => {
     
   })
