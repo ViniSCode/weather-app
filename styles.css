@@ -2,7 +2,7 @@
 :root{
   --background: #09153E;
   --light-background: #101C43;
-  --light-text: #CFD0D1;
+  --light-text: #cecece;
   --light-blue-text: #556291;
   --lighter-blue-text: rgb(149, 162, 211);
   --soft-blue-text: rgb(184, 196, 240);
@@ -41,7 +41,7 @@ body{
   box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
 
   display: grid;
-  grid-template-columns: auto 25rem;
+  grid-template-columns: auto 23rem;
   gap: 2rem;
 
   max-width: 1280px;
@@ -202,8 +202,25 @@ header p{
   justify-content: space-between;
 }
 
+.right .weather .bottom-left{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.right .weather .bottom-left img{
+ margin-right: 1rem;
+}
+
+.right .weather p{
+  font-size: 1.1rem;
+  color: var(--light-text);
+  font-weight: 500;
+}
+
 .right .weather .top p{
-  font-size: .8rem;
+  font-size: .9rem;
+  margin-left: 3rem;
   color: var(--light-blue-text);
   font-weight: 500;
 } 
@@ -215,10 +232,6 @@ header p{
 .right .weather .bottom {
  margin-bottom: 1rem;
 } 
-
-.top p{
-  margin-bottom: 1rem;
-}
 
 .main-container{
   margin-bottom: 2rem;
@@ -255,4 +268,4 @@ header p{
 
 
 
-/**/
+/*Responsive*/
