@@ -9,148 +9,151 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="container">
-    <div class="left">
-      <header>
-        <div class="header-left">
-          <h2>Good afternoon</h2>  
-          <p>Have a nice day</p>
+  <div class="app">
+    <div class="container">
+      <div class="left">
+        <header>
+          <div class="header-left">
+            <h2>Good afternoon</h2>  
+            <p>Have a nice day</p>
+          </div>
+  
+          <div class="header-right">
+            <h2>8:21PM</h2>  
+            <p>Monday, 03 may 2022</p>
+          </div>
+        </header>
+  
+        <div class="search">
+          <label for="search-box">
+            <img src="./assets/search.svg" alt="">
+            <input type="text" id="search-box" name="search-box" placeholder="London, UK">
+          </label>
         </div>
-
-        <div class="header-right">
-          <h2>8:21PM</h2>  
-          <p>Monday, 03 may 2022</p>
-        </div>
-      </header>
-
-      <div class="search">
-        <label for="search-box">
-          <img src="./assets/search.svg" alt="">
-          <input type="text" id="search-box" name="search-box" placeholder="London, UK">
-        </label>
+  
+        <main>
+          <div class="main-container">
+           <div class="weather-preview">
+             <h2 id="city-name"></h2>
+            <div class="display-temp">
+                <div class="temp-left">
+                  <div>
+                    <h3 id="temperature"></h3>
+                    <p>Temperature</p>
+                  </div>
+                  <div>
+                    <h3 id="humidity"></h3>
+                    <p>Humidity</p>
+                  </div>
+                </div>
+                <div class="temp-right">
+                  <div>
+                    <h3 id="feels-like"></h3>
+                    <p>Feels Like</p>
+                  </div>
+                  <div>
+                    <h3 id="wind"></h3>
+                    <p>Wind</p>
+                  </div>
+                </div>      
+            </div>
+           </div>
+          </div>
+          <div class="chart">
+            <canvas id="myChart" width="500" height="250"></canvas>
+          </div>
+        </main>
       </div>
-
-      <main>
-        <div class="main-container">
-         <div class="weather-preview">
-           <h2 id="city-name"></h2>
-          <div class="display-temp">
-              <div class="temp-left">
-                <div>
-                  <h3 id="temperature"></h3>
-                  <p>Temperature</p>
-                </div>
-                <div>
-                  <h3 id="humidity"></h3>
-                  <p>Humidity</p>
-                </div>
-              </div>
-              <div class="temp-right">
-                <div>
-                  <h3 id="feels-like"></h3>
-                  <p>Feels Like</p>
-                </div>
-                <div>
-                  <h3 id="wind"></h3>
-                  <p>Wind</p>
-                </div>
-              </div>      
+  
+  
+      <div class="right">
+        <img id="right-img" src="./assets/cloud.svg" alt="">
+  
+        <div class="weather">
+          <h2>Party Cloudy</h2>
+  
+          <div class="weather-item">
+            <div class="top">
+              <p>Monday</p>
+            </div>
+            <div class="bottom">
+              <img src="./assets/cloudy.svg">
+              <p>Party Cloudy</p>
+              <p>34°C / 23°C</p>
+            </div>
           </div>
-         </div>
-        </div>
-        <div class="chart">
-          <canvas id="myChart" width="500" height="250"></canvas>
-        </div>
-      </main>
-    </div>
-
-
-    <div class="right">
-      <img id="right-img" src="./assets/cloud.svg" alt="">
-
-      <div class="weather">
-        <h2>Party Cloudy</h2>
-
-        <div class="weather-item">
-          <div class="top">
-            <p>Monday</p>
+          
+  
+          <div class="weather-item">
+            <div class="top">
+              <p>Tuesday</p>
+            </div>
+            <div class="bottom">
+              <img src="./assets/rain.svg">
+              <p>Party Cloudy</p>
+              <p>34°C / 23°C</p>
+            </div>
           </div>
-          <div class="bottom">
-            <img src="./assets/cloudy.svg">
-            <p>Party Cloudy</p>
-            <p>34°C / 23°C</p>
+  
+          <div class="weather-item">
+            <div class="top">
+              <p>Wednesday</p>
+            </div>
+            <div class="bottom">
+              <img src="./assets/clear.svg">
+              <p>Party Cloudy</p>
+              <p>34°C / 23°C</p>
+            </div>
           </div>
-        </div>
-        
-
-        <div class="weather-item">
-          <div class="top">
-            <p>Tuesday</p>
+  
+          <div class="weather-item">
+            <div class="top">
+              <p>Thursday</p>
+            </div>
+            <div class="bottom">
+              <img src="./assets/cloudy.svg">
+              <p>Party Cloudy</p>
+              <p>34°C / 23°C</p>
+            </div>
           </div>
-          <div class="bottom">
-            <img src="./assets/rain.svg">
-            <p>Party Cloudy</p>
-            <p>34°C / 23°C</p>
+  
+          <div class="weather-item">
+            <div class="top">
+              <p>Friday</p>
+            </div>
+            <div class="bottom">
+              <img src="./assets/cloudy.svg">
+              <p>Party Cloudy</p>
+              <p>34°C / 23°C</p>
+            </div>
           </div>
-        </div>
-
-        <div class="weather-item">
-          <div class="top">
-            <p>Wednesday</p>
+  
+          <div class="weather-item">
+            <div class="top">
+              <p>Saturday</p>
+            </div>
+            <div class="bottom">
+              <img src="./assets/cloudy.svg">
+              <p>Party Cloudy</p>
+              <p>34°C / 23°C</p>
+            </div>
           </div>
-          <div class="bottom">
-            <img src="./assets/clear.svg">
-            <p>Party Cloudy</p>
-            <p>34°C / 23°C</p>
-          </div>
-        </div>
-
-        <div class="weather-item">
-          <div class="top">
-            <p>Thursday</p>
-          </div>
-          <div class="bottom">
-            <img src="./assets/cloudy.svg">
-            <p>Party Cloudy</p>
-            <p>34°C / 23°C</p>
-          </div>
-        </div>
-
-        <div class="weather-item">
-          <div class="top">
-            <p>Friday</p>
-          </div>
-          <div class="bottom">
-            <img src="./assets/cloudy.svg">
-            <p>Party Cloudy</p>
-            <p>34°C / 23°C</p>
-          </div>
-        </div>
-
-        <div class="weather-item">
-          <div class="top">
-            <p>Saturday</p>
-          </div>
-          <div class="bottom">
-            <img src="./assets/cloudy.svg">
-            <p>Party Cloudy</p>
-            <p>34°C / 23°C</p>
-          </div>
-        </div>
-
-        <div class="weather-item">
-          <div class="top">
-            <p>Sunday, July</p>
-          </div>
-          <div class="bottom">
-            <img src="./assets/rain.svg">
-            <p>Rain</p>
-            <p>34°C / 23°C</p>
+  
+          <div class="weather-item">
+            <div class="top">
+              <p>Sunday, July</p>
+            </div>
+            <div class="bottom">
+              <img src="./assets/rain.svg">
+              <p>Rain</p>
+              <p>34°C / 23°C</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   
   <script src="api.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

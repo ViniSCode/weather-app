@@ -12,7 +12,6 @@ async function initialDisplayWeather(){
   )
   const data = await response.json();
 
-
   cityName.innerText = 'London, UK';
   temp.innerText = data.main.temp.toFixed() + "°C";
   humidity.innerText = data.main.humidity.toFixed() + "%";
@@ -50,6 +49,8 @@ async function searchWeather(city){
   })
 
   const data = await response.json();
+
+  console.log(data)
 
   cityName.innerText = city;
   temp.innerText = data.main.temp.toFixed() + "°C";
