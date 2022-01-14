@@ -107,6 +107,14 @@ header p{
   font-size: 2.5rem;
 }
 
+#today-weather-description{
+  text-transform: capitalize;
+}
+
+.bottom-left > p{
+  text-transform: capitalize;
+}
+
 .main-container{
   background:var(--light-background);
   
