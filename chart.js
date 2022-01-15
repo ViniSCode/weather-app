@@ -1,3 +1,23 @@
+const date = []
+
+
+let counter = -1;
+Storage.get("forecast").forEach(forecastDay => {
+  counter++;
+
+  const currentDate = new Date();
+  currentDate.setDate(currentDate.getDate() + counter)
+
+  const dayName = currentDate.toLocaleString("en-us", { weekday: "short" });
+  const monthName = currentDate.toLocaleString("en-us", { month: "short" });
+  const day = currentDate.toLocaleString("en-us").split("/")[1];
+
+  const newDate = dayName + "," + day
+
+  date.push(newDate)
+
+})
+
 const ctx = document.getElementById("myChart").getContext("2d");
 
 let options = {
@@ -52,16 +72,23 @@ let options = {
 };
 
 const myChart = new Chart(ctx, {
-  type: "line",
+  type: "bar",
   data: {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    labels: date,
     datasets: [
       {
         label: "Temperature",
-        data: [10, 19, 3, 5, 2, 3, 10],
-        backgroundColor: ["rgba(54, 162, 235, 1)"],
-        borderColor: ["rgba(54, 162, 235, 1)"],
-        borderWidth: 5,
+        data: [
+          ((Storage.get("forecast")[0].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
+          ((Storage.get("forecast")[1].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
+          ((Storage.get("forecast")[2].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
+          ((Storage.get("forecast")[3].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
+          ((Storage.get("forecast")[4].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
+          ((Storage.get("forecast")[5].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
+          ((Storage.get("forecast")[6].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
+          ((Storage.get("forecast")[7].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
+        ],
+        backgroundColor: ["rgba(54, 162, 235, .9)"],
       },
     ],
   },

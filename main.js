@@ -6,6 +6,15 @@ const humidity = document.querySelector("#humidity");
 const weatherDescription = document.querySelector("#today-weather-description");
 const forecastWeather = document.querySelector(".container-forecast-weather");
 
+const Storage = {
+  get() {
+    return JSON.parse(localStorage.getItem("forecast")) || [];
+  },
+  set(forecast){
+    localStorage.setItem("forecast", JSON.stringify(forecast));
+  }
+}
+
 const Forecast = [];
 
 //search city name by pressing enter 
@@ -54,6 +63,8 @@ async function forecastWeatherHTML(lat, lon) {
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=f50fb40048cb583c6797ce64964afdbe`
   );
   const data = await response.json();
+
+  Storage.set(data.daily)
 
   daily = data.daily;
   let counter = -1;
