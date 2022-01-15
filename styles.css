@@ -41,7 +41,7 @@ body{
   box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
 
   display: grid;
-  grid-template-columns: auto 23rem;
+  grid-template-columns: auto 25rem;
   gap: 2rem;
 
   max-width: 1280px;
@@ -109,6 +109,11 @@ header p{
 
 #today-weather-description{
   text-transform: capitalize;
+}
+
+#forecastTemp{
+  text-align: center;
+  font-size: 1.060rem;
 }
 
 .bottom-left > p{
