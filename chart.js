@@ -1,22 +1,20 @@
-const date = []
-
+const date = [];
 
 let counter = -1;
-Storage.get("forecast").forEach(forecastDay => {
+Storage.get("forecast").forEach((forecastDay) => {
   counter++;
 
   const currentDate = new Date();
-  currentDate.setDate(currentDate.getDate() + counter)
+  currentDate.setDate(currentDate.getDate() + counter);
 
   const dayName = currentDate.toLocaleString("en-us", { weekday: "short" });
   const monthName = currentDate.toLocaleString("en-us", { month: "short" });
   const day = currentDate.toLocaleString("en-us").split("/")[1];
 
-  const newDate = dayName + "," + day
+  const newDate = dayName + "," + day;
 
-  date.push(newDate)
-
-})
+  date.push(newDate);
+});
 
 const ctx = document.getElementById("myChart").getContext("2d");
 
@@ -28,7 +26,8 @@ let options = {
         font: {
           size: 16,
         },
-        // usePointStyle: true,
+        usePointStyle: true,
+        StorageManager,
       },
     },
   },
@@ -59,6 +58,7 @@ let options = {
   legend: {
     position: "bottom",
     usePointStyle: true,
+    display: false,
 
     labels: {
       fontSize: 16,
@@ -71,7 +71,7 @@ let options = {
   maintainAspectRatio: false,
 };
 
-const myChart = new Chart(ctx, {
+var myChart = new Chart(ctx, {
   type: "bar",
   data: {
     labels: date,
@@ -79,14 +79,46 @@ const myChart = new Chart(ctx, {
       {
         label: "Temperature",
         data: [
-          ((Storage.get("forecast")[0].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
-          ((Storage.get("forecast")[1].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
-          ((Storage.get("forecast")[2].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
-          ((Storage.get("forecast")[3].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
-          ((Storage.get("forecast")[4].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
-          ((Storage.get("forecast")[5].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
-          ((Storage.get("forecast")[6].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
-          ((Storage.get("forecast")[7].temp.max + Storage.get("forecast")[0].temp.min) / 2).toFixed(), 
+          (
+            (Storage.get("forecast")[0].temp.max +
+              Storage.get("forecast")[0].temp.min) /
+            2
+          ).toFixed(),
+          (
+            (Storage.get("forecast")[1].temp.max +
+              Storage.get("forecast")[0].temp.min) /
+            2
+          ).toFixed(),
+          (
+            (Storage.get("forecast")[2].temp.max +
+              Storage.get("forecast")[0].temp.min) /
+            2
+          ).toFixed(),
+          (
+            (Storage.get("forecast")[3].temp.max +
+              Storage.get("forecast")[0].temp.min) /
+            2
+          ).toFixed(),
+          (
+            (Storage.get("forecast")[4].temp.max +
+              Storage.get("forecast")[0].temp.min) /
+            2
+          ).toFixed(),
+          (
+            (Storage.get("forecast")[5].temp.max +
+              Storage.get("forecast")[0].temp.min) /
+            2
+          ).toFixed(),
+          (
+            (Storage.get("forecast")[6].temp.max +
+              Storage.get("forecast")[0].temp.min) /
+            2
+          ).toFixed(),
+          (
+            (Storage.get("forecast")[7].temp.max +
+              Storage.get("forecast")[0].temp.min) /
+            2
+          ).toFixed(),
         ],
         backgroundColor: ["rgba(54, 162, 235, .9)"],
       },

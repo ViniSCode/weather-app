@@ -282,3 +282,26 @@ header p{
 
 
 /*Responsive*/
+
+@media (max-width: 1366px){
+  html{
+    font-size: 85%;
+  }
+  
+  .app{
+    margin: 2rem 8rem;
+  }
+
+  .container{
+    grid-template-columns: auto 24rem;
+  }
+  
+  header{
+    margin-top: 1rem;
+  }
+
+  h2#today-weather-description{
+    margin-top: 4rem;
+  }
+
+}

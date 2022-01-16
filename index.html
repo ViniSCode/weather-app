@@ -9,73 +9,73 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container">
-      <div class="left">
-        <header>
-          <div class="header-left">
-            <h2>Good afternoon</h2>
-            <p>Have a nice day</p>
+    <div class="app">
+      <div class="container">
+        <div class="left">
+          <header>
+            <div class="header-left">
+              <h2>Good afternoon</h2>
+              <p>Have a nice day</p>
+            </div>
+
+            <div class="header-right">
+              <h2>8:21PM</h2>
+              <p>Monday, 03 may 2022</p>
+            </div>
+          </header>
+
+          <div class="search">
+            <label for="search-box">
+              <img src="./assets/search.svg" alt="" />
+              <input
+                type="text"
+                id="search-box"
+                name="search-box"
+                placeholder="London, UK"
+              />
+            </label>
           </div>
 
-          <div class="header-right">
-            <h2>8:21PM</h2>
-            <p>Monday, 03 may 2022</p>
-          </div>
-        </header>
-
-        <div class="search">
-          <label for="search-box">
-            <img src="./assets/search.svg" alt="" />
-            <input
-              type="text"
-              id="search-box"
-              name="search-box"
-              placeholder="London, UK"
-            />
-          </label>
-        </div>
-
-        <main>
-          <div class="main-container">
-            <div class="weather-preview">
-              <h2 id="city-name"></h2>
-              <div class="display-temp">
-                <div class="temp-left">
-                  <div>
-                    <h3 id="temperature"></h3>
-                    <p>Temperature</p>
+          <main>
+            <div class="main-container">
+              <div class="weather-preview">
+                <h2 id="city-name"></h2>
+                <div class="display-temp">
+                  <div class="temp-left">
+                    <div>
+                      <h3 id="temperature"></h3>
+                      <p>Temperature</p>
+                    </div>
+                    <div>
+                      <h3 id="humidity"></h3>
+                      <p>Humidity</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 id="humidity"></h3>
-                    <p>Humidity</p>
-                  </div>
-                </div>
-                <div class="temp-right">
-                  <div>
-                    <h3 id="feels-like"></h3>
-                    <p>Feels Like</p>
-                  </div>
-                  <div>
-                    <h3 id="wind"></h3>
-                    <p>Wind</p>
+                  <div class="temp-right">
+                    <div>
+                      <h3 id="feels-like"></h3>
+                      <p>Feels Like</p>
+                    </div>
+                    <div>
+                      <h3 id="wind"></h3>
+                      <p>Wind</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="chart">
-            <canvas id="myChart" width="500" height="250"></canvas>
-          </div>
-        </main>
-      </div>
+            <div class="chart">
+              <canvas id="myChart" width="500" height="250"></canvas>
+            </div>
+          </main>
+        </div>
 
-      <div class="right">
-        <img id="right-img" src="./assets/cloud.svg" alt="" />
+        <div class="right">
+          <img id="right-img" src="./assets/cloud.svg" alt="" />
 
-        <div class="weather" id="forecast-weather">
-          <h2 id="today-weather-description"></h2>
-          <div class="container-forecast-weather">
-
+          <div class="weather" id="forecast-weather">
+            <h2 id="today-weather-description"></h2>
+            <div class="container-forecast-weather"></div>
           </div>
         </div>
       </div>
