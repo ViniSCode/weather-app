@@ -10,14 +10,14 @@ const Storage = {
   get() {
     return JSON.parse(localStorage.getItem("forecast")) || [];
   },
-  set(forecast){
+  set(forecast) {
     localStorage.setItem("forecast", JSON.stringify(forecast));
-  }
-}
+  },
+};
 
 const Forecast = [];
 
-//search city name by pressing enter 
+//search city name by pressing enter
 search.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     if (search.value === "") return;
@@ -53,7 +53,7 @@ async function searchWeather(city) {
   wind.innerText = data.wind.speed;
   weatherDescription.innerText = data.weather[0].description;
   search.value = "";
-  APP.reload()
+  APP.reload();
   forecastWeatherHTML(data.coord.lat, data.coord.lon);
 }
 
@@ -64,13 +64,13 @@ async function forecastWeatherHTML(lat, lon) {
   );
   const data = await response.json();
 
-  Storage.set(data.daily)
+  Storage.set(data.daily);
 
   daily = data.daily;
   let counter = -1;
 
   daily.forEach((forecastDay) => {
-    const img = getWeatherImageCode(forecastDay.weather[0].id)
+    const img = getWeatherImageCode(forecastDay.weather[0].id);
     counter++;
 
     const currentDate = new Date();
@@ -88,7 +88,7 @@ const DOM = {
   add(img, dayName, monthName, day, forecastDay) {
     const weatherContainerDiv = document.createElement("div");
     weatherContainerDiv.innerHTML = DOM.addForecastOnHTML(
-      img, 
+      img,
       dayName,
       monthName,
       day,
@@ -119,34 +119,32 @@ const DOM = {
   },
 };
 
-
 const APP = {
-  
-//initial weather - London
+  //initial weather - London
   async init() {
-    searchWeather("London, UK") 
+    searchWeather("London, UK");
   },
-  
-  reload(){
+
+  reload() {
     forecastWeather.innerHTML = "";
-  }
-}
+  },
+};
 
-function getWeatherImageCode(weatherCode){
-  if(weatherCode === 800) return "clear";
-  if(weatherCode === 801) return "few";
-  if(weatherCode === 802) return "clouds";
-  if(weatherCode === 803) return "broken";
-  if(weatherCode === 804) return "overcast";
+function getWeatherImageCode(weatherCode) {
+  if (weatherCode === 800) return "clear";
+  if (weatherCode === 801) return "few";
+  if (weatherCode === 802) return "clouds";
+  if (weatherCode === 803) return "broken";
+  if (weatherCode === 804) return "overcast";
 
-  if(weatherCode >= 700) return "clouds ";
+  if (weatherCode >= 700) return "clouds ";
 
-  if(weatherCode >= 600) return "snow";
+  if (weatherCode >= 600) return "snow";
 
-  if(weatherCode >= 500) return "rain";
-  if(weatherCode >= 300) return "rain";
+  if (weatherCode >= 500) return "rain";
+  if (weatherCode >= 300) return "rain";
 
-  if(weatherCode >= 200) return "thunderstorm";
+  if (weatherCode >= 200) return "thunderstorm";
 }
 
 APP.init();
