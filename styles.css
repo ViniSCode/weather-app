@@ -26,7 +26,7 @@ input {
 
 html {
   height: 100%;
-  font-size: 90%;
+  font-size: 87.5%;
 }
 
 body {
@@ -40,7 +40,7 @@ body {
 }
 
 .app {
-  margin: 0 2rem;
+  margin: 2rem 8rem;
 }
 
 .container {
@@ -59,7 +59,7 @@ body {
 }
 
 header {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -122,6 +122,7 @@ header p {
 
 #today-weather-description {
   text-transform: capitalize;
+  margin-top: 5rem;
 }
 
 #forecastTemp {
@@ -202,9 +203,15 @@ header p {
   background: var(--light-background);
   border-radius: 1.438rem;
   transition: all 0.3s;
+
   box-shadow: var(--box-shadow);
   margin-top: 4rem;
 }
+
+.right:hover {
+  box-shadow: none;
+}
+
 
 .right img#right-img {
   position: absolute;
@@ -277,6 +284,7 @@ header p {
 
   transition: all 0.3s;
   box-shadow: var(--box-shadow);
+  background: var(--light-background);
 }
 
 .chart:hover {
@@ -284,34 +292,13 @@ header p {
 }
 
 #myChart {
-  background: var(--light-background);
 
   border-radius: 0.5rem;
   padding: 2rem;
   width: 100% !important;
   height: 100% !important;
+  max-width: 750px;
+  margin: 0 auto;
 }
 
 /*Responsive*/
-
-@media (max-width: 1366px) {
-  html {
-    font-size: 85%;
-  }
-
-  .app {
-    margin: 2rem 8rem;
-  }
-
-  .container {
-    grid-template-columns: auto 24rem;
-  }
-
-  header {
-    margin-top: 1rem;
-  }
-
-  h2#today-weather-description {
-    margin-top: 4rem;
-  }
-}

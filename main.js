@@ -20,7 +20,17 @@ const Forecast = [];
 //search city name by pressing enter
 search.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    if (search.value === "") return;
+    if (search.value === "" ) return;
+    if (search.value.slice(0,1) === ","){
+      Swal.fire({
+        title: "error!",
+        text: "Invalid name",
+        icon: "warning",
+        confirmButtonText: "Close",
+      });
+      search.value = "";
+      return;
+    }
 
     searchWeather(search.value);
   }

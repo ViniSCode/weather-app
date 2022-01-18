@@ -8,7 +8,6 @@ Storage.get("forecast").forEach((forecastDay) => {
   currentDate.setDate(currentDate.getDate() + counter);
 
   const dayName = currentDate.toLocaleString("en-us", { weekday: "short" });
-  const monthName = currentDate.toLocaleString("en-us", { month: "short" });
   const day = currentDate.toLocaleString("en-us").split("/")[1];
 
   const newDate = dayName + "," + day;
