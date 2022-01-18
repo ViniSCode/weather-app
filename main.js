@@ -37,6 +37,7 @@ search.addEventListener("keypress", (e) => {
 });
 
 async function searchWeather(city) {
+
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=f50fb40048cb583c6797ce64964afdbe`
   ).then((response) => {
