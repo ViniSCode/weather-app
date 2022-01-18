@@ -98,6 +98,7 @@ async function forecastWeatherHTML(lat, lon) {
 const DOM = {
   add(img, dayName, monthName, day, forecastDay) {
     const weatherContainerDiv = document.createElement("div");
+    weatherContainerDiv.classList.add("weather-item-container")
     weatherContainerDiv.innerHTML = DOM.addForecastOnHTML(
       img,
       dayName,
@@ -121,7 +122,7 @@ const DOM = {
             <p>${forecastDay.weather[0].description}</p>
           </div>
 
-          <p id="forecastTemp">${forecastDay.temp.min.toFixed()}°C / ${forecastDay.temp.max.toFixed()}°C</p>
+          <p id="forecastTemp">${forecastDay.temp.min.toFixed()}/${forecastDay.temp.max.toFixed()}°C</p>
         </div>
       </div>
       `;
