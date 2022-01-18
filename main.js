@@ -122,7 +122,9 @@ const DOM = {
             <p>${forecastDay.weather[0].description}</p>
           </div>
 
+          <div className="bottom-right">
           <p id="forecastTemp">${forecastDay.temp.min.toFixed()}/${forecastDay.temp.max.toFixed()}°C</p>
+          </div>
         </div>
       </div>
       `;
