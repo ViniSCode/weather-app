@@ -301,7 +301,7 @@ header p {
   margin: 0 auto;
 }
 
-/*Responsive*/
+/*===================== Responsive =====================*/
 @media(max-width: 1280px){
   html{
     font-size: 80%;
@@ -348,13 +348,13 @@ header p {
   }
 
 
-  .right .weather .bottom-left{
-    max-width: 106px;
-    width: 106px;
-  }
-
   p#forecastTemp{
     margin-left: 2rem;
+  }
+
+  .right .weather .top p {
+    font-size: 1rem;
+    font-weight: 600;
   }
 }
 
@@ -373,5 +373,15 @@ header p {
 
   .chart{
     display: none;
+  }
+
+  .right .weather .bottom-left{
+    max-width: 106px;
+    width: 106px;
+  }
+
+  .right .weather .top p {
+    font-size: 0.9rem;
+    font-weight: 500;
   }
 }
