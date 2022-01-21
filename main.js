@@ -27,6 +27,7 @@ search.addEventListener("keypress", (e) => {
         text: "Invalid name",
         icon: "warning",
         confirmButtonText: "Close",
+        footer: "City, Country - EX: Toronto, CA"
       });
       search.value = "";
       return;
@@ -47,6 +48,7 @@ async function searchWeather(city) {
         text: "Location not found",
         icon: "error",
         confirmButtonText: "Close",
+        footer: "City, Country - EX: Toronto, CA"
       });
       search.value = "";
       throw new Error("NOT FOUND");
