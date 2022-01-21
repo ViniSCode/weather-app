@@ -5,6 +5,8 @@ const feelsLike = document.querySelector("#feels-like");
 const humidity = document.querySelector("#humidity");
 const weatherDescription = document.querySelector("#today-weather-description");
 const forecastWeather = document.querySelector(".container-forecast-weather");
+const displayDate = document.querySelector('#displayDate');
+const displayTime = document.querySelector('#displayTime');
 
 const Storage = {
   get() {
@@ -164,3 +166,30 @@ function getWeatherImageCode(weatherCode) {
 }
 
 APP.init();
+
+
+// date 
+const currentDate = new Date();
+currentDate.setDate(currentDate.getDate());
+
+const dayName = currentDate.toLocaleString("en-us", { weekday: "short" });
+const CompleteDayName = currentDate.toLocaleString("en-us", { weekday: "long" });
+const monthName = currentDate.toLocaleString("en-us", { month: "long" });
+
+const month = document.querySelector('#month').innerHTML = CompleteDayName;
+
+const day = currentDate.toLocaleString("en-us").split("/")[1];
+displayDate.innerText = dayName + ", " + day +  ", " + monthName;
+
+// time
+setInterval(function(){
+  let currentTime = new Date(),
+  hours = currentTime.getHours(),
+  minutes = currentTime.getMinutes(),
+  ampm = hours > 11 ? 'PM' : 'AM';
+
+  hours += hours < 10 ? '0' : '';
+  minutes += minutes < 10 ? '0' : '';
+
+  displayTime.innerHTML = hours + ":" + minutes + " " + ampm;
+}, 1000);
