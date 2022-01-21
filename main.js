@@ -176,10 +176,10 @@ const dayName = currentDate.toLocaleString("en-us", { weekday: "short" });
 const CompleteDayName = currentDate.toLocaleString("en-us", { weekday: "long" });
 const monthName = currentDate.toLocaleString("en-us", { month: "long" });
 
-const month = document.querySelector('#month').innerHTML = CompleteDayName;
-
 const day = currentDate.toLocaleString("en-us").split("/")[1];
+const month = document.querySelector('#month').innerHTML = CompleteDayName  + ", " + day;
 displayDate.innerText = dayName + ", " + day +  ", " + monthName;
+
 
 // time
 setInterval(function(){
