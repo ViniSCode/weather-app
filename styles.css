@@ -300,6 +300,67 @@ header p {
   margin: 0 auto;
 }
 
+
+/*========= Loading Screen =========*/
+.loader-overlay{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #1d2356;
+}
+
+.loader{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, transparent, transparent 40%, #03f4b8);
+  animation: animate 1s linear infinite;
+}
+
+@keyframes animate{
+  0%{
+    transform: rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+.loader:before{
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  background: #1d2356;
+  border-radius: 50%;
+  z-index: 1000;
+}
+
+.loader:after{
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: #1d2356;
+  border-radius: 50%;
+  z-index: 1;
+  filter: blur(30px);
+}
+
+
 /*===================== Responsive =====================*/
 @media(max-width: 1280px){
   html{

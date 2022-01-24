@@ -83,9 +83,22 @@
       </div>
     </div>
 
+    <div class="loader-overlay">
+      <div class="loader"></div>  
+    </div>
+    
     <script src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="chart.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      // ==== LOADING SCREEN
+      let spinner = document.querySelector('.loader-overlay');
+
+      window.addEventListener('load', () => {
+        spinner.parentElement.removeChild(spinner);
+      })
+
+    </script>
   </body>
 </html>
