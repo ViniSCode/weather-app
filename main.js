@@ -7,6 +7,17 @@ const weatherDescription = document.querySelector("#today-weather-description");
 const forecastWeather = document.querySelector(".container-forecast-weather");
 const displayDate = document.querySelector('#displayDate');
 const displayTime = document.querySelector('#displayTime');
+const spinnerLoading = document.querySelector('.loader-overlay');
+
+
+const apiWhileFetching = {
+  loading(){
+    spinnerLoading.style.display = 'flex';
+  },
+  closeLoading(){
+    spinnerLoading.style.display = 'none';
+  }
+}
 
 const Storage = {
   get() {
@@ -40,6 +51,7 @@ search.addEventListener("keypress", (e) => {
 });
 
 async function searchWeather(city) {
+  apiWhileFetching.loading();
 
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=f50fb40048cb583c6797ce64964afdbe`
@@ -53,6 +65,7 @@ async function searchWeather(city) {
         footer: "City, Country - EX: Toronto, CA"
       });
       search.value = "";
+      apiWhileFetching.closeLoading();
       throw new Error("NOT FOUND");
     }
 
@@ -96,6 +109,7 @@ async function forecastWeatherHTML(lat, lon) {
     const day = currentDate.toLocaleString("en-us").split("/")[1];
 
     DOM.add(img, dayName, monthName, day, forecastDay);
+    apiWhileFetching.closeLoading();
   });
 }
 

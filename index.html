@@ -96,7 +96,7 @@
       let spinner = document.querySelector('.loader-overlay');
 
       window.addEventListener('load', () => {
-        spinner.parentElement.removeChild(spinner);
+        setTimeout(() => {     spinner.style.display = 'none';}, 1000);
       })
 
     </script>
