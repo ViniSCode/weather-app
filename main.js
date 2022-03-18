@@ -219,6 +219,8 @@ setInterval(function(){
 
 ////////////////////////////////
 // ChartJS //
+var myChart;
+
 addChart = {
   getChartDate(){
     const date = [];
@@ -253,25 +255,24 @@ addChart = {
   },  
 
   reload(){
-    ctx.remove();
     myChart.data.labels.pop();
     myChart.data.datasets.forEach((dataset) => {
       dataset.data.pop();
+      console.log('Updating Chart Data...');
     });
-    myChart.update();
     myChart.destroy();
   },
 
   addNewChart(){
     if(myChart){
       addChart.reload();
-      console.log('Update Chart...');
+      console.log('Updating Chart...');
     }
 
     var ctx = document.getElementById('myChart').getContext('2d');
     const date = addChart.getChartDate();
 
-    var myChart = new Chart(ctx, {
+      myChart = new Chart(ctx, {
       type: 'line',
       data: {
           labels: date,
