@@ -14,6 +14,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  user-select: none; 
 }
 
 a,
@@ -37,10 +38,12 @@ body {
     #1b3768 100%
   );
   color: white;
+  user-select: none; 
 }
 
 .app {
   margin: 2rem 8rem;
+  user-select: none; 
 }
 
 .container {
