@@ -111,6 +111,8 @@ async function forecastWeatherHTML(lat, lon) {
     DOM.add(img, dayName, monthName, day, forecastDay);
     apiWhileFetching.closeLoading();
   });
+  
+  addChart.addNewChart();
 }
 
 const DOM = {
@@ -124,6 +126,10 @@ const DOM = {
       day,
       forecastDay
     );
+
+    const tempForecastChart = (forecastDay.temp.min + forecastDay.temp.max) / 2;
+
+    // AddChart.getData(tempForecastChart.toFixed())
 
     forecastWeather.appendChild(weatherContainerDiv);
   },
@@ -206,4 +212,90 @@ setInterval(function(){
   minutes += minutes < 10 ? '0' : '';
 
   displayTime.innerHTML = hours + ":" + minutes + " " + ampm;
+  
 }, 1000);
+
+
+
+////////////////////////////////
+// ChartJS //
+addChart = {
+  getChartDate(){
+    const date = [];
+
+    let counter = -1;
+    Storage.get("forecast").forEach((forecastDay) => {
+      counter++;
+    
+      const currentDate = new Date();
+      currentDate.setDate(currentDate.getDate() + counter);
+    
+      const dayName = currentDate.toLocaleString("en-us", { weekday: "short" });
+      const day = currentDate.toLocaleString("en-us").split("/")[1];
+    
+      const newDate = dayName + "," + day;
+    
+      date.push(newDate);
+    });
+
+    return date;  
+  },
+
+  getChartData(){
+
+    let chartData = [];
+    
+    for (let i = 0; i < 8; i++){
+      chartData.push(((Storage.get("forecast")[i].temp.max + Storage.get("forecast")[i].temp.min) / 2).toFixed())
+    }
+  
+    return chartData;
+  },  
+
+  reload(){
+    ctx.remove();
+    myChart.data.labels.pop();
+    myChart.data.datasets.forEach((dataset) => {
+      dataset.data.pop();
+    });
+    myChart.update();
+    myChart.destroy();
+  },
+
+  addNewChart(){
+    if(myChart){
+      addChart.reload();
+      console.log('Update Chart...');
+    }
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    const date = addChart.getChartDate();
+
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: date,
+          datasets: [{
+              label: 'Temperature',
+              data: addChart.getChartData(),
+              fill: false,
+              borderColor: 'rgba(54, 162, 235, 1)',
+              tension: 0.1,
+              borderWidth: 3
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          },
+
+          maintainAspectRatio: false,
+      }
+    });
+  }
+}
+
+
+addChart.addNewChart();
