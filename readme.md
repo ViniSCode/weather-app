@@ -1,4 +1,4 @@
-# ## See the app running [ Weather App](https://weather-xi-flax.vercel.app/)
+# See the app running [ Weather App](https://weather-xi-flax.vercel.app/)
 # Layout
 ![enter image description here](https://github.com/ViniSCode/weather-app/blob/main/assets/layout_alt.png?raw=true)
 ## Functionalities
