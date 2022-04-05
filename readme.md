@@ -2,7 +2,8 @@
 ## See the app running [ Weather App](https://weather-xi-flax.vercel.app/)
 =======
 # 🚀 See the app running [ Weather App](https://weather-xi-flax.vercel.app/)
->>>>>>> f61e3305649846f95578bbbf9038e6e8f22a3489
+
+<!-- >>>>>>> f61e3305649846f95578bbbf9038e6e8f22a3489 -->
 # Layout
 ![enter image description here](https://github.com/ViniSCode/weather-app/blob/main/assets/layout_alt.png?raw=true)
 ## Functionalities
