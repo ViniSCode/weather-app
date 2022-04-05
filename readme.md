@@ -1,5 +1,5 @@
 ## See the app running [ Weather App](https://weather-xi-flax.vercel.app/)
-=======
+
 # 🚀 See the app running [ Weather App](https://weather-xi-flax.vercel.app/)
 
 # Layout
