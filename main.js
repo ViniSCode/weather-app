@@ -137,13 +137,13 @@ const DOM = {
   addForecastOnHTML(img, dayName, monthName, day, forecastDay) {
     html = `
       <div class="weather-item">
-        <div class="top">
-          <p>${dayName}, ${monthName}, ${day}</p>
-        </div>
         <div class="bottom">
           <div class="bottom-left">
             <img src="./assets/${img}.png" />
-            <p>${forecastDay.weather[0].description}</p>
+            <div class="weather-cards">
+              <p class="day-weather">${dayName}, ${monthName}, ${day}</p>
+              <p class="forecast-day">${forecastDay.weather[0].description}</p>
+            </div>
           </div>
 
           <div className="bottom-right">
@@ -279,17 +279,41 @@ addChart = {
           datasets: [{
               label: 'Temperature',
               data: addChart.getChartData(),
-              fill: false,
-              borderColor: 'rgba(54, 162, 235, 1)',
-              tension: 0.1,
-              borderWidth: 3
+              fill: true,
+              borderColor: '#ffffff',
+              backgroundColor: 'rgba(255, 255, 255, .2)',
+              tension: 0.5,
+              borderWidth: 3,
           }]
       },
       options: {
+        legend: {
+          labels: {
+            fontColor: '#ffffff',
+          }
+        },
           scales: {
               y: {
-                  beginAtZero: true
-              }
+                  beginAtZero: true,
+              },
+              yAxes: [{
+                ticks: {
+                  fontColor: '#ffffff'
+                },
+
+                grid: {
+                  display: false,
+                }
+              }],
+
+              xAxes: [{
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  fontColor: '#ffffff'
+                }
+              }]
           },
 
           maintainAspectRatio: false,
