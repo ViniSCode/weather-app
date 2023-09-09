@@ -1,118 +1,217 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import Image from "next/image";
+import { FiSearch } from "react-icons/fi";
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <div className="px-2 max-w-[404px] mx-auto lg:max-w-full lg:grid lg:grid-cols-[16rem_auto]">
+      <aside className="hidden md:block">
+        <h2>Sidebar</h2>
+      </aside>
+
+      <div className="content">
+        <header className="pt-8 mx-auto w-full flex items-center justify-between">
+          <p className="bg-white rounded-xl p-2 w-fit text-sm">
+            Tue, 5, September
+          </p>
+
+          <div className="flex gap-2">
+            <button className="bg-gray-900 rounded-full text-white font-semibold text-[17px] h-10 w-10">
+              °C
+            </button>
+            <button className="bg-white rounded-full text-black font-semibold text-[17px] h-10 w-10">
+              °F
+            </button>
+          </div>
+        </header>
+
+        <main className="main-content pb-20">
+          <div className="block lg:hidden">
+            <section className="mt-8">
+              <label className="w-full relative h-fit">
+                <FiSearch className="w-5 h-5 absolute z-10 left-2 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Search for places..."
+                  className="rounded-full pl-10 pr-4 py-2 z-20 bg-white w-full"
+                />
+              </label>
+            </section>
+
+            <section className="mt-16 flex items-center justify-between gap-10">
+              <Image
+                src="/assets/storm.svg"
+                width={256}
+                height={256}
+                alt="weather image"
+                className="w-full max-w-[256px]"
+              />
+              <div>
+                <h3 className="text-7xl xxs:text-[92px] flex items-center">
+                  12<span className="text-3xl xxs:text-[50px]">°C</span>
+                </h3>
+                <p>Mostly Clear</p>
+              </div>
+            </section>
+          </div>
+
+          <section className="mt-16">
+            <h3 className="text-[22px] font-semibold">Week Forecast</h3>
+
+            <div className="mt-8 flex gap-4 overflow-hidden w-full">
+              <div className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center">
+                <p>Sun</p>
+                <Image
+                  src="/assets/clear.svg"
+                  alt="weather image"
+                  width={45}
+                  height={45}
+                  className="w-11 h-12"
+                />
+                <p>32°</p>
+              </div>
+
+              <div className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center">
+                <p>Sun</p>
+                <Image
+                  src="/assets/rain.svg"
+                  alt="weather image"
+                  width={45}
+                  height={45}
+                  className="w-11 h-12"
+                />
+                <p>32°</p>
+              </div>
+
+              <div className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center">
+                <p>Sun</p>
+                <Image
+                  src="/assets/cloudy.svg"
+                  alt="weather image"
+                  width={45}
+                  height={45}
+                  className="w-11 h-12"
+                />
+                <p>32°</p>
+              </div>
+
+              <div className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center">
+                <p>Sun</p>
+                <Image
+                  src="/assets/storm.svg"
+                  alt="weather image"
+                  width={45}
+                  height={45}
+                  className="w-11 h-12"
+                />
+                <p>32°</p>
+              </div>
+
+              <div className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center">
+                <p>Sun</p>
+                <Image
+                  src="/assets/clear.svg"
+                  alt="weather image"
+                  width={45}
+                  height={45}
+                  className="w-11 h-12"
+                />
+                <p>32°</p>
+              </div>
+
+              <div className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center">
+                <p>Sun</p>
+                <Image
+                  src="/assets/clear.svg"
+                  alt="weather image"
+                  width={45}
+                  height={45}
+                  className="w-11 h-12"
+                />
+                <p>32°</p>
+              </div>
+
+              <div className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center">
+                <p>Sun</p>
+                <Image
+                  src="/assets/clear.svg"
+                  alt="weather image"
+                  width={45}
+                  height={45}
+                  className="w-11 h-12"
+                />
+                <p>32°</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mt-16">
+            <div className="flex gap-5">
+              <button className="text-[22px] font-semibold underline">
+                Details
+              </button>
+              <button className="text-[22px] font-semibold text-gray-500">
+                Week Chart
+              </button>
+            </div>
+
+            <div className="mt-8 font-medium grid grid-cols-2 gap-3">
+              <div className="bg-white rounded-xl p-4 flex flex-col gap-6">
+                <p className="text-xs xxs:text-sm text-gray-500">Humidity</p>
+                <p className="text-3xl xxs:text-4xl">25%</p>
+
+                <div class="w-full h-5 bg-gray-200 rounded-full dark:bg-gray-700">
+                  <div class="h-5 bg-blue-500 rounded-full dark:bg-blue-500 w-[25%]"></div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-4 flex flex-col gap-6">
+                <p className="text-xs xxs:text-sm text-gray-500">
+                  Rain Probability
+                </p>
+                <p className="text-3xl xxs:text-4xl">75%</p>
+
+                <div class="w-full h-5 bg-gray-200 rounded-full dark:bg-gray-700">
+                  <div class="h-5 bg-blue-500 rounded-full dark:bg-blue-500 w-[75%]"></div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-4 flex flex-col gap-6">
+                <p className="text-xs xxs:text-sm text-gray-500">Wind</p>
+                <p className="text-3xl xxs:text-4xl">
+                  5.79 <span className="text-xs xxs:text-base">Km/h</span>
+                </p>
+                <p className="text-xs xxs:text-sm text-gray-500">WSW</p>
+              </div>
+
+              <div className="bg-white rounded-xl p-4 flex flex-col gap-6">
+                <p className="text-xs xxs:text-sm text-gray-500">Pressure</p>
+                <p className="text-3xl xxs:text-4xl">
+                  1017 <span className="text-xs xxs:text-base">hPa</span>
+                </p>
+                <p className="text-xs xxs:text-sm text-gray-500">Normal</p>
+              </div>
+
+              <div className="bg-white rounded-xl p-4 flex flex-col gap-6">
+                <p className="text-xs xxs:text-sm text-gray-500">Humidity</p>
+                <p className="text-3xl xxs:text-4xl">25%</p>
+
+                <div class="w-full h-5 bg-gray-200 rounded-full dark:bg-gray-700">
+                  <div class="h-5 bg-blue-500 rounded-full dark:bg-blue-500 w-[45%]"></div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-4 flex flex-col gap-6">
+                <p className="text-xs xxs:text-sm text-gray-500">Humidity</p>
+                <p className="text-3xl xxs:text-4xl">25%</p>
+
+                <div class="w-full h-5 bg-gray-200 rounded-full dark:bg-gray-700">
+                  <div class="h-5 bg-blue-500 rounded-full dark:bg-blue-500 w-[45%]"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </div>
+  );
 }
