@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function MainWeatherSection() {
   return (
-    <section className="mt-16 lg:mt-8 flex flex-row items-center justify-between gap-10 lg:ml-4  lg:flex-col lg:items-start">
+    <section className="mt-16 lg:mt-8 flex flex-row items-center justify-between gap-10 lg:flex-col lg:items-start">
       <Image
         src="/assets/storm.svg"
         width={256}

@@ -23,6 +23,7 @@ export function SidebarInfo() {
           src="/assets/name-background.png"
           width={100}
           height={200}
+          quality={100}
           alt="city name"
           className="h-[150px] w-full rounded-[25px] object-cover"
         />
