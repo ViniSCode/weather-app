@@ -16,3 +16,7 @@ body {
   height: 100%;
   @apply bg-gray-300;
 }
+
+.sidebarInfoHeight {
+  min-height: calc(100vh - 550px);
+}

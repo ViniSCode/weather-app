@@ -6,7 +6,7 @@ export function Sidebar() {
   return (
     <aside className="hidden pt-0 px-0 lg:pt-4 xl:pt-8 lg:px-5 lg:block bg-white">
       <div
-        className="fixed w-[17rem] xl:w-[23rem]"
+        className="fixed w-[17rem] xl:w-[23rem] min-h-full"
         style={{ overflowY: "auto", maxHeight: "calc(100vh)" }}
       >
         <LocationSearchBar />
