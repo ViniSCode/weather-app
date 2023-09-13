@@ -1,4 +1,4 @@
-import { DetailCards } from "@/components/DetailCards";
+import { DetailCardsSection } from "@/components/DetailCardsSection";
 import { Header } from "@/components/Header";
 import { LocationSearchBar } from "@/components/LocationSearchBar";
 import { MainWeatherSection } from "@/components/MainWeatherSection";
@@ -22,18 +22,7 @@ export default function Home() {
 
           <WeekForecastSection />
 
-          <section className="mt-10 xl:mt-16">
-            <div className="flex gap-5">
-              <button className="text-lg xl:text-[22px] font-semibold underline">
-                Details
-              </button>
-              <button className="text-lg xl:text-[22px] font-semibold text-gray-500">
-                Week Chart
-              </button>
-            </div>
-
-            <DetailCards />
-          </section>
+          <DetailCardsSection />
         </main>
       </div>
     </div>

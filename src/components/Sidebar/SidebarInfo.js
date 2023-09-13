@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export function SidebarInfo() {
-  
   return (
     <div className="flex flex-col gap-10 sidebarInfoHeight pb-10">
       <div className="flex flex-col gap-8">
