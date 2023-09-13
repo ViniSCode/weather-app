@@ -82,7 +82,12 @@ export function DetailCards() {
 
         <div className="flex items-center gap-2">
           <p className="text-xs xxs:text-sm text-gray-500">Party Cloud</p>
-          <Image src="/assets/storm.svg" width={20} height={20} />
+          <Image
+            src="/assets/storm.svg"
+            width={20}
+            height={20}
+            alt="weather image"
+          />
         </div>
       </div>
     </div>
