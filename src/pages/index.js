@@ -13,15 +13,13 @@ export default function Home() {
       <div className="content w-full px-0 lg:max-w-[950px] xl:max-w-[1180px] mx-auto">
         <Header />
 
-        <main className="pb-20">
+        <main>
           <div className="block lg:hidden">
             <LocationSearchBar />
 
             <MainWeatherSection />
           </div>
-
           <WeekForecastSection />
-
           <DetailCardsSection />
         </main>
       </div>

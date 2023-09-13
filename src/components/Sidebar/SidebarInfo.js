@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function SidebarInfo() {
   return (
-    <div className="flex flex-col gap-10 sidebarInfoHeight pb-10">
+    <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-8">
         <div className="flex items-center gap-4">
           <Image src="/assets/clock.png" width={23} height={23} alt="date" />
