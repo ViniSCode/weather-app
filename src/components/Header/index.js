@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { CityName } from "./CityName";
 
 export function Header() {
   const fadeIn = {
@@ -30,12 +31,9 @@ export function Header() {
         animate="visible"
         className="flex gap-4 font-medium"
       >
-        <motion.p
-          variants={item}
-          className="block bg-white lg:bg-gray-900 lg:text-white rounded-xl p-2 w-fit max-w-[130px] text-sm truncate"
-        >
-          São Paulo, BR
-        </motion.p>
+        <motion.div variants={item}>
+          <CityName />
+        </motion.div>
         <motion.p
           variants={item}
           className="hidden lg:block bg-white rounded-xl p-2 w-fit text-sm"

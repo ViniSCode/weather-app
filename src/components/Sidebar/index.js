@@ -34,7 +34,7 @@ export function Sidebar() {
         <MainWeatherSection />
       </motion.div>
       <div className="mt-6 mb-6 h-[2px] bg-gray-300"></div>
-      <motion.div variants={item} className="w-full mb-10">
+      <motion.div variants={item} className="w-full mb-2">
         <SidebarInfo />
       </motion.div>
     </motion.aside>

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function DetailCards() {
   return (
-    <div className="mt-8 font-medium grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-8">
+    <div className="font-medium grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-8">
       <div className="bg-white rounded-xl p-4 flex flex-col gap-6 lg:p-4 xl:p-6 xl:gap-10">
         <p className="text-xs xxs:text-sm lg:text-sm text-gray-500">Humidity</p>
         <p className="text-3xl xxs:text-4xl">25%</p>

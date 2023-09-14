@@ -1,4 +1,4 @@
-import { DetailCardsSection } from "@/components/DetailCardsSection";
+import { DetailsChartTabs } from "@/components/DetailsChartTabs";
 import { Header } from "@/components/Header";
 import { LocationSearchBar } from "@/components/LocationSearchBar";
 import { MainWeatherSection } from "@/components/MainWeatherSection";
@@ -30,15 +30,14 @@ export default function Home() {
 
       <div className="content w-full px-0 lg:max-w-[950px] xl:max-w-[1180px] mx-auto">
         <Header />
-
         <main>
           <div className="block lg:hidden">
             <LocationSearchBar />
-
             <MainWeatherSection />
           </div>
+
           <WeekForecastSection />
-          <DetailCardsSection />
+          <DetailsChartTabs />
         </main>
       </div>
     </div>
