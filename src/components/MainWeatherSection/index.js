@@ -1,8 +1,25 @@
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export function MainWeatherSection() {
+  const container = {
+    hidden: { opacity: 0, x: "-20px" },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.2,
+      },
+    },
+  };
+
   return (
-    <section className="mt-16 lg:mt-8 flex flex-row items-center justify-between gap-10 lg:flex-col lg:items-start">
+    <motion.section
+      initial="hidden"
+      animate="visible"
+      variants={container}
+      className="mt-16 lg:mt-8 flex flex-row items-center justify-between gap-10 lg:flex-col lg:items-start"
+    >
       <Image
         src="/assets/storm.svg"
         width={256}
@@ -18,6 +35,6 @@ export function MainWeatherSection() {
           Mostly Clear
         </p>
       </div>
-    </section>
+    </motion.section>
   );
 }

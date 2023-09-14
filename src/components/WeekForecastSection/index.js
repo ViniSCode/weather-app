@@ -18,12 +18,22 @@ export function WeekForecastSection() {
     visible: { opacity: 1, x: 0 },
   };
 
+  const item2 = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+      },
+    },
+  };
+
   return (
     <section className="mt-10 xl:mt-16 min-h-[180px]">
       <motion.h3
         initial="hidden"
         animate="visible"
-        variants={container}
+        variants={item2}
         className="text-lg xl:text-[22px] font-semibold"
       >
         Week Forecast
