@@ -22,7 +22,10 @@ export function DetailsChartTabs() {
   };
 
   return (
-    <Tabs.Root className="mt-10 flex flex-col w-full" defaultValue="tab1">
+    <Tabs.Root
+      className="mt-10 xl:mt-16 flex flex-col w-full"
+      defaultValue="tab1"
+    >
       <Tabs.List className="flex gap-4" aria-label="Manage your account">
         <Tabs.Trigger
           className="data-[state=active]:focus-visible:shadow-black data-[state=active]:cursor-default focus-visible:p-1 data-[state=active]:focus-visible:shadow-[0_0_0_2px] data-[state=active]:focus-visible:relative text-lg xl:text-[22px] font-semibold flex items-center justify-center leading-none text-gray-500 select-none first:rounded-tl-md last:rounded-tr-md hover:text-black  data-[state=active]:text-black data-[state=active]:underline outline-none cursor-pointer"

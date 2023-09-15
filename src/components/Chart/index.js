@@ -33,42 +33,40 @@ export default function WeekChart() {
           opacityTo: "0.3",
         },
       },
+      stroke: {
+        curve: "smooth",
+      },
       grid: {
         show: false,
       },
       dataLabels: {
-        enabled: false,
+        enabled: true,
       },
       xaxis: {
         type: "date",
-        categories: [
-          "Thu, 14",
-          "Fri, 14",
-          "Sat, 14",
-          "Sun, 14",
-          "Mon, 14",
-          "Tue, 14",
-          "Wed, 14",
-        ],
+        categories: ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"],
+      },
+      yaxis: {
+        show: true,
       },
     },
     series: [
       {
         name: "temperature",
-        data: [18, 22, 10, 15, 25, 20, 15, 30],
+        data: [18, 22, 10, 15, 25, 20, 15],
       },
     ],
   });
 
   return (
     <motion.div initial="hidden" animate="visible" variants={chartFadeIn}>
-      <div className="w-full bg-white rounded-xl px-4 py-4">
+      <div className="w-full bg-white rounded-xl px-0 py-1 lg:py-4 lg:px-2  h-[300px] md:h-[400px]">
         <Chart
           options={chartData.options}
           series={chartData.series}
           type="area"
           width="100%"
-          height="400"
+          height="100%"
         />
       </div>
     </motion.div>
