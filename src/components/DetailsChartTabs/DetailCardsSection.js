@@ -18,7 +18,7 @@ export function DetailCardsSection() {
       initial="hidden"
       animate="visible"
       variants={container}
-      className="mt-10 xl:mt-16"
+      className="mt-8"
     >
       <DetailCards />
     </motion.section>

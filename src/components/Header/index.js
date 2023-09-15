@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { CelsiusFahrenheit } from "./CelsiusFahrenheit";
 import { CityName } from "./CityName";
 
 export function Header() {
@@ -49,12 +50,7 @@ export function Header() {
         animate="visible"
         className="flex gap-2"
       >
-        <button className="bg-gray-900 rounded-full text-white font-semibold text-[17px] h-10 w-10">
-          °C
-        </button>
-        <button className="bg-white rounded-full text-black font-semibold text-[17px] h-10 w-10">
-          °F
-        </button>
+        <CelsiusFahrenheit />
       </motion.div>
     </header>
   );
