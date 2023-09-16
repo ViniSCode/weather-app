@@ -1,8 +1,9 @@
 import Image from "next/image";
 
 export function SidebarInfo({ weather, formattedDateTime }) {
-  console.log(weather);
-  let humidity = weather && weather.main.humidity;
+  let wind = weather && weather.wind.speed;
+  let precipitation = weather && weather.forecastData.current.pop;
+  let cityName = weather.name + ", " + weather.sys.country;
 
   return (
     <div className="flex flex-col gap-10">
@@ -15,11 +16,13 @@ export function SidebarInfo({ weather, formattedDateTime }) {
         </div>
         <div className="flex items-center gap-4">
           <Image src="/assets/wind.svg" width={23} height={23} alt="wind" />
-          <p className="font-medium">Wind - 5.79 Km/h</p>
+          <p className="font-medium">Wind - {wind} Km/h</p>
         </div>
         <div className="flex items-center gap-4">
           <Image src="/assets/rain.svg" width={23} height={23} alt="rain" />
-          <p className="font-medium">Rain - 87%</p>
+          <p className="font-medium">
+            Rain - {precipitation ? `${precipitation}%` : "No precipitation"}
+          </p>
         </div>
       </div>
 
@@ -29,12 +32,12 @@ export function SidebarInfo({ weather, formattedDateTime }) {
           width={100}
           height={200}
           quality={100}
-          alt="city name"
+          alt={cityName}
           className="h-[150px] w-full rounded-[25px] object-cover"
         />
 
         <p className="text-2xl font-medium text-white text-center w-full absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
-          São Paulo, BR
+          {cityName}
         </p>
       </div>
     </div>
