@@ -1,6 +1,8 @@
 import Image from "next/image";
 
-export function SidebarInfo() {
+export function SidebarInfo({ weather }) {
+  console.log(weather);
+
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-8">

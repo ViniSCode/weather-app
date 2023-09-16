@@ -21,7 +21,7 @@ export default function Home(props) {
         <title>Today's Weather</title>
       </Head>
 
-      <Sidebar />
+      {props.weather && <Sidebar weather={props.weather} />}
 
       <div className="content w-full px-0 lg:max-w-[950px] xl:max-w-[1180px] mx-auto">
         {props.weather && <Header weather={props.weather} />}

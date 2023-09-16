@@ -1,7 +1,8 @@
+import { getWeatherCode } from "@/utils/weather";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export function MainWeatherSection() {
+export function MainWeatherSection({ weather }) {
   const container = {
     hidden: { opacity: 0, x: "-20px" },
     visible: {
@@ -13,6 +14,11 @@ export function MainWeatherSection() {
     },
   };
 
+  let weatherImage =
+    weather && weather.weather && getWeatherCode(weather.weather[0].id);
+
+  let weatherConditions = weather && weather.weather && weather.weather[0].main;
+
   return (
     <motion.section
       initial="hidden"
@@ -21,7 +27,7 @@ export function MainWeatherSection() {
       className="mt-16 lg:mt-8 flex flex-row items-center justify-between gap-10 lg:flex-col lg:items-start"
     >
       <Image
-        src="/assets/storm.svg"
+        src={`/assets/${weatherImage}.svg`}
         width={256}
         height={256}
         quality={10}
@@ -31,10 +37,11 @@ export function MainWeatherSection() {
       />
       <div>
         <h3 className="text-7xl xxs:text-[92px] lg:text-7xl flex items-center">
-          12<span className="text-3xl xxs:text-[50px] lg:text-[40px]">°C</span>
+          {weather?.main.temp && weather.main.temp.toFixed()}
+          <span className="text-3xl xxs:text-[50px] lg:text-[40px]">°C</span>
         </h3>
         <p className="font-medium mt-0 lg:mt-4 xl:mt-4 xl:text-lg lg:font-semibold">
-          Mostly Clear
+          {weatherConditions}
         </p>
       </div>
     </motion.section>
