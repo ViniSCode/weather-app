@@ -1,27 +1,9 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { CelsiusFahrenheit } from "./CelsiusFahrenheit";
 import { CityName } from "./CityName";
 
-export function Header({ weather }) {
+export function Header({ weather, formattedDateTime }) {
   let cityName = weather.name + ", " + weather.sys.country;
-  const [formattedDateTime, setFormattedDateTime] = useState(null);
-
-  useEffect(() => {
-    const options = {
-      timeZone: weather.forecastData.timezone,
-      weekday: "short",
-      day: "numeric",
-      month: "long",
-      // year: "numeric",
-      // hour: "numeric",
-      // minute: "numeric",
-      // second: "numeric",
-    };
-    const date = new Date();
-    const formattedDateTime = date.toLocaleString("en-US", options);
-    setFormattedDateTime(formattedDateTime);
-  }, []);
 
   const fadeIn = {
     hidden: { opacity: 0 },
@@ -59,7 +41,7 @@ export function Header({ weather }) {
           variants={item}
           className="hidden md:block md:bg-gray-900 md:text-white  lg:bg-white lg:text-black rounded-xl p-2 w-fit text-sm"
         >
-          {formattedDateTime && formattedDateTime}
+          {formattedDateTime && formattedDateTime.todaysDate}
         </motion.p>
       </motion.div>
 

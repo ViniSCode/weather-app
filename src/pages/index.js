@@ -5,8 +5,31 @@ import { MainWeatherSection } from "@/components/MainWeatherSection";
 import { Sidebar } from "@/components/Sidebar";
 import { WeekForecastSection } from "@/components/WeekForecastSection";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 
 export default function Home(props) {
+  const [formattedDateTime, setFormattedDateTime] = useState(null);
+
+  useEffect(() => {
+    const dateInfo = {
+      timeZone: props.weather.forecastData.timezone,
+      weekday: "short",
+      day: "numeric",
+      month: "long",
+    };
+    const dayTimeInfo = {
+      timeZone: props.weather.forecastData.timezone,
+      weekday: "long",
+      hour: "numeric",
+      minute: "numeric",
+    };
+    const date = new Date();
+    const todaysDate = date.toLocaleString("en-US", dateInfo);
+    const dayTime = date.toLocaleString("en-US", dayTimeInfo);
+    setFormattedDateTime({ todaysDate, dayTime });
+    setFormattedDateTime({ todaysDate, dayTime });
+  }, []);
+
   return (
     <div className="px-5 min-h-screen max-w-[404px] md:max-w-[632px] mx-auto lg:max-w-full lg:grid lg:pl-0 pr-5 lg:grid-cols-[20rem_auto] gap-10 xl:grid-cols-[26rem_auto]">
       <Head>
@@ -21,10 +44,20 @@ export default function Home(props) {
         <title>Today's Weather</title>
       </Head>
 
-      {props.weather && <Sidebar weather={props.weather} />}
+      {props.weather && (
+        <Sidebar
+          weather={props.weather}
+          formattedDateTime={formattedDateTime}
+        />
+      )}
 
       <div className="content w-full px-0 lg:max-w-[950px] xl:max-w-[1180px] mx-auto">
-        {props.weather && <Header weather={props.weather} />}
+        {props.weather && (
+          <Header
+            weather={props.weather}
+            formattedDateTime={formattedDateTime}
+          />
+        )}
         <main>
           <div className="block lg:hidden">
             <LocationSearchBar />
