@@ -25,7 +25,7 @@ export function Sidebar() {
       variants={container}
       initial="hidden"
       animate="visible"
-      className="hidden pt-0 px-0 lg:pt-4 xl:pt-8 lg:px-10 lg:block bg-white"
+      className="hidden pt-0 px-0 lg:pt-4 xl:pt-8 lg:px-10 lg:block bg-white z-50 relative"
     >
       <motion.div variants={item}>
         <LocationSearchBar />

@@ -21,3 +21,7 @@ body {
 .sidebarInfoHeight {
   min-height: calc(100vh - 550px);
 }
+
+img {
+  pointer-events: none;
+}
