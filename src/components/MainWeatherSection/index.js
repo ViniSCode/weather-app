@@ -24,6 +24,8 @@ export function MainWeatherSection() {
         src="/assets/storm.svg"
         width={256}
         height={256}
+        quality={10}
+        priority
         alt="weather image"
         className="w-full max-w-[256px] lg:max-w-[200px] xl:max-w-[256px]"
       />

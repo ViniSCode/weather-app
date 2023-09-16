@@ -57,6 +57,7 @@ export function WeekForecastSection() {
 
       <motion.div
         drag="x"
+        whileDrag={{ scale: 1.03 }}
         dragConstraints={{ right: 0, left: -carouselWidth }}
         dragMomentum={false}
         onPointerDown={() => {
