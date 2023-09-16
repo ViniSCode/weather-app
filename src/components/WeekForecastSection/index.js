@@ -1,8 +1,11 @@
+import { getWeatherCode } from "@/utils/weather";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-export function WeekForecastSection() {
+export function WeekForecastSection({ weather }) {
+  let forecast = weather && weather.forecastData.daily;
+
   const [carouselWidth, setCarouselWidth] = useState(0);
   const [isDragging, setIsDragging] = useState(0);
   const slideRef = useRef(null);
@@ -74,6 +77,33 @@ export function WeekForecastSection() {
           isDragging && "cursor-grabbing"
         }`}
       >
+        {forecast.map((temp, index) => {
+          console.log(temp);
+          return (
+            <motion.div
+              key={index}
+              variants={item}
+              className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
+            >
+              <p>{temp.weather[0].main}</p>
+              <Image
+                src={`/assets/${getWeatherCode(temp.weather[0].id)}.svg`}
+                alt="weather image"
+                width={45}
+                height={45}
+                className="w-11 h-12 lg:w-10 lg:h-8"
+              />
+              <p>{temp.feels_like.day.toFixed()}°</p>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </section>
+  );
+}
+
+/*
+
         <motion.div
           variants={item}
           className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
@@ -178,7 +208,4 @@ export function WeekForecastSection() {
           />
           <p>32°</p>
         </motion.div>
-      </motion.div>
-    </section>
-  );
-}
+*/
