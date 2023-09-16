@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 export function WeekForecastSection() {
   const [carouselWidth, setCarouselWidth] = useState(0);
+  const [isDragging, setIsDragging] = useState(0);
   const slideRef = useRef(null);
 
   useEffect(() => {
@@ -58,11 +59,19 @@ export function WeekForecastSection() {
         drag="x"
         dragConstraints={{ right: 0, left: -carouselWidth }}
         dragMomentum={false}
+        onPointerDown={() => {
+          setIsDragging(true);
+        }}
+        onPointerOut={() => {
+          setIsDragging(false);
+        }}
         dragTransition={{ bounceStiffness: 200, bounceDamping: 15 }}
         initial="hidden"
         animate="visible"
         variants={container}
-        className="mt-8 flex gap-4 w-full lg:overflow-auto lg:justify-between"
+        className={`mt-8 flex gap-4 w-full cursor-grab lg:cursor-default lg:overflow-auto lg:justify-between ${
+          isDragging && "cursor-grabbing"
+        }`}
       >
         <motion.div
           variants={item}
