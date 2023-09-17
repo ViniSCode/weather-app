@@ -8,7 +8,6 @@ import Image from "next/image";
 import { FiCompass } from "react-icons/fi";
 export function DetailCards({ weather }) {
   let humidity = weather.main.humidity;
-  console.log(weather);
   let rain = weather.forecastData.daily[0].pop * 100;
   let wind = {
     speed: weather.wind.speed.toFixed(1),

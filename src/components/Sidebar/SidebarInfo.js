@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function SidebarInfo({ weather, formattedDateTime }) {
   let wind = weather && weather.wind.speed;
-  let precipitation = weather && weather.forecastData.current.pop;
+  let precipitation = weather && weather.forecastData.daily[0].pop * 100;
   let cityName = weather.name + ", " + weather.sys.country;
 
   return (
