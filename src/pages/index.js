@@ -65,7 +65,7 @@ export default function Home(props) {
           </div>
 
           {props.weather && <WeekForecastSection weather={props.weather} />}
-          <DetailsChartTabs />
+          {props.weather && <DetailsChartTabs weather={props.weather} />}
         </main>
       </div>
     </div>

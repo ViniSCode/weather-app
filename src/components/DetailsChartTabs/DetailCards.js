@@ -1,6 +1,41 @@
+import {
+  formattedVisibility,
+  getVisibilityStatus,
+  getWindDirection,
+} from "@/utils/weather";
 import { motion } from "framer-motion";
 import Image from "next/image";
-export function DetailCards() {
+import { FiCompass } from "react-icons/fi";
+export function DetailCards({ weather }) {
+  let humidity = weather.main.humidity;
+  console.log(weather);
+  let rain = weather.forecastData.daily[0].pop * 100;
+  let wind = {
+    speed: weather.wind.speed.toFixed(1),
+    direction: getWindDirection(weather.wind.deg),
+  };
+  let pressure = weather.main.pressure;
+  let visibility = formattedVisibility(weather.visibility);
+  let visibilityStatus = getVisibilityStatus(weather.visibility);
+
+  let humidityPercentage = () => (
+    <div className="w-full h-5 lg:h-8 bg-gray-200 rounded-full dark:bg-gray-700">
+      <div
+        className="h-5 lg:h-8 bg-blue-500 rounded-full dark:bg-blue-500]"
+        style={{ width: `${humidity}%` }}
+      ></div>
+    </div>
+  );
+
+  let rainPercentage = () => (
+    <div className="w-full h-5 lg:h-8 bg-gray-200 rounded-full dark:bg-gray-700">
+      <div
+        className="h-5 lg:h-8 bg-blue-500 rounded-full dark:bg-blue-500]"
+        style={{ width: `${rain}%` }}
+      ></div>
+    </div>
+  );
+
   return (
     <div className="font-medium items-center grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-8 mb-4">
       <motion.div
@@ -8,11 +43,9 @@ export function DetailCards() {
         className="bg-white rounded-xl p-4 flex flex-col justify-between gap-6 lg:p-4 xl:p-6 xl:gap-10 h-full"
       >
         <p className="text-xs xxs:text-sm lg:text-sm text-gray-500">Humidity</p>
-        <p className="text-3xl xxs:text-4xl">25%</p>
+        <p className="text-3xl xxs:text-4xl">{humidity}%</p>
 
-        <div className="w-full h-5 lg:h-8 bg-gray-200 rounded-full dark:bg-gray-700">
-          <div className="h-5 lg:h-8 bg-blue-500 rounded-full dark:bg-blue-500 w-[25%]"></div>
-        </div>
+        {humidityPercentage()}
       </motion.div>
 
       <motion.div
@@ -22,25 +55,23 @@ export function DetailCards() {
         <p className="text-xs xxs:text-sm lg:text-sm text-gray-500">
           Rain Probability
         </p>
-        <p className="text-3xl xxs:text-4xl">75%</p>
+        <p className="text-3xl xxs:text-4xl">{rain}%</p>
 
-        <div className="w-full h-5 lg:h-8 bg-gray-200 rounded-full dark:bg-gray-700">
-          <div className="h-5 lg:h-8 bg-blue-500 rounded-full dark:bg-blue-500 w-[75%]"></div>
-        </div>
+        {rainPercentage()}
       </motion.div>
 
       <motion.div
         whileHover={{ scale: 1.03 }}
         className="bg-white rounded-xl p-4 flex flex-col justify-between gap-6 lg:p-4 xl:p-6 xl:gap-10 h-full"
       >
-        <p className="text-xs xxs:text-sm lg:text-sm text-gray-500">
-          Rain Probability
-        </p>
+        <p className="text-xs xxs:text-sm lg:text-sm text-gray-500">Wind</p>
         <p className="text-3xl xxs:text-4xl lg:text-4xl">
-          5.79 <span className="text-xs xxs:text-base">Km/h</span>
+          {wind.speed} <span className="text-xs xxs:text-base">Km/h</span>
         </p>
 
-        <p className="text-xs xxs:text-sm lg:text-sm text-gray-500">WSW</p>
+        <p className="text-xs xxs:text-sm lg:text-sm text-gray-500 flex gap-2 items-center">
+          <FiCompass size={18} /> {wind.direction}
+        </p>
       </motion.div>
 
       <motion.div
@@ -49,7 +80,7 @@ export function DetailCards() {
       >
         <p className="text-xs xxs:text-sm text-gray-500">Pressure</p>
         <p className="text-3xl xxs:text-4xl">
-          1017 <span className="text-xs xxs:text-base">hPa</span>
+          {pressure} <span className="text-xs xxs:text-base">hPa</span>
         </p>
         <p className="text-xs xxs:text-sm text-gray-500">Normal</p>
       </motion.div>
@@ -95,17 +126,16 @@ export function DetailCards() {
         whileHover={{ scale: 1.03 }}
         className="bg-white rounded-xl p-4 flex flex-col justify-between gap-6 lg:p-4 xl:p-6 xl:gap-10 h-full"
       >
-        <p className="text-xs xxs:text-sm text-gray-500">Cloud Cover</p>
-        <p className="text-3xl xxs:text-4xl">25%</p>
+        <p className="text-xs xxs:text-sm text-gray-500">Visibility</p>
+        <p className="text-3xl xxs:text-4xl">
+          {visibility}
+          <span className="text-xs xxs:text-base">Km</span>
+        </p>
 
         <div className="flex items-center gap-2">
-          <p className="text-xs xxs:text-sm text-gray-500">Party Cloud</p>
-          <Image
-            src="/assets/storm.svg"
-            width={20}
-            height={20}
-            alt="weather image"
-          />
+          <p className="text-xs xxs:text-sm text-gray-500">
+            {visibilityStatus}
+          </p>
         </div>
       </motion.div>
     </div>

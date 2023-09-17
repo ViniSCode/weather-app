@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { DetailCards } from "./DetailCards";
 
-export function DetailCardsSection() {
+export function DetailCardsSection({ weather }) {
   const container = {
     hidden: { opacity: 0, y: "100px" },
     visible: {
@@ -20,7 +20,7 @@ export function DetailCardsSection() {
       variants={container}
       className="mt-8"
     >
-      <DetailCards />
+      <DetailCards weather={weather} />
     </motion.section>
   );
 }

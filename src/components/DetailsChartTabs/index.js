@@ -9,7 +9,7 @@ const DynamicChart = dynamic(() => import("../Chart/index"), {
   loading: () => <Loading />,
 });
 
-export function DetailsChartTabs() {
+export function DetailsChartTabs({ weather }) {
   const container = {
     hidden: { opacity: 0, x: "-20px" },
     visible: {
@@ -45,7 +45,7 @@ export function DetailsChartTabs() {
         </Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content value="tab1">
-        <DetailCardsSection />
+        <DetailCardsSection weather={weather} />
       </Tabs.Content>
       <Tabs.Content className="mt-8" value="tab2">
         <DynamicChart />

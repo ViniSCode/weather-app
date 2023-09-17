@@ -78,7 +78,6 @@ export function WeekForecastSection({ weather }) {
         }`}
       >
         {forecast.map((temp, index) => {
-          console.log(temp);
           return (
             <motion.div
               key={index}
