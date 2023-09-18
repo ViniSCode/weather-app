@@ -31,8 +31,8 @@ const Storage = {
 const Forecast = [];
 
 //search city name by pressing enter
-search.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
+search.addEventListener("change", (e) => {
+
     if (search.value === "" ) return;
     if (search.value.slice(0,1) === ","){
       Swal.fire({
@@ -47,7 +47,7 @@ search.addEventListener("keypress", (e) => {
     }
 
     searchWeather(search.value);
-  }
+
 });
 
 async function searchWeather(city) {
