@@ -3,7 +3,7 @@ import { LocationSearchBar } from "../LocationSearchBar";
 import { MainWeatherSection } from "../MainWeatherSection";
 import { SidebarInfo } from "./SidebarInfo";
 
-export function Sidebar({ weather, formattedDateTime }) {
+export function Sidebar({ weather, formattedDateTime, apiKey }) {
   const container = {
     hidden: { opacity: 0, x: "-100px" },
     visible: {
@@ -28,7 +28,7 @@ export function Sidebar({ weather, formattedDateTime }) {
       className="hidden pt-0 px-0 lg:pt-4 xl:pt-8 lg:px-10 lg:block bg-white z-50 relative"
     >
       <motion.div variants={item}>
-        <LocationSearchBar />
+        <LocationSearchBar apiKey={apiKey} />
       </motion.div>
       <motion.div variants={item}>
         <MainWeatherSection weather={weather} />

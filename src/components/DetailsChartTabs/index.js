@@ -2,7 +2,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { Loading } from "../Loading";
-import { DetailCardsSection } from "./DetailCards";
+import { DetailCardsSection } from "./DetailCardsSection";
 
 const DynamicChart = dynamic(() => import("./Chart/index"), {
   ssr: false,

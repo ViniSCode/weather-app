@@ -7,7 +7,7 @@ import { WeekForecastSection } from "@/components/WeekForecastSection";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
-export default function Home(props) {
+export default function Location(props) {
   const [formattedDateTime, setFormattedDateTime] = useState(null);
 
   useEffect(() => {
@@ -74,6 +74,8 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(context) {
+  const { location } = context.query;
+
   const url =
     process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api/weather";
   try {
@@ -82,7 +84,7 @@ export async function getServerSideProps(context) {
 
     try {
       const weatherResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=Tuparendi, BR&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${location[0]}&units=metric&appid=${apiKey}`
       );
 
       if (!weatherResponse.ok) {
