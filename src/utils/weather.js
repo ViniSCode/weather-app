@@ -68,3 +68,15 @@ export function getVisibilityStatus(visibility) {
     return "Poor";
   }
 }
+
+export function TimeConvert(timezone, time) {
+  const dayTimeInfo = {
+    timeZone: timezone,
+    hour: "numeric",
+    minute: "numeric",
+  };
+  const date = new Date(time * 1000); // Convert to milliseconds
+  const dayTime = date.toLocaleString("en-US", dayTimeInfo);
+
+  return dayTime;
+}
