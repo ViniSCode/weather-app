@@ -17,7 +17,7 @@ export function SearchLocationContextProvider(props) {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=${10}&appid=${
+        `https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=${10}&appid=${
           props.apiKey
         }`
       );

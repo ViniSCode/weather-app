@@ -19,6 +19,7 @@ export function LocationSearchBar() {
     isFocused,
     setIsFocused,
   } = useSearchLocation();
+
   const searchResultsRef = useRef(null);
 
   function handleBlur() {
@@ -89,7 +90,8 @@ export function LocationSearchBar() {
         </div>
       ) : (
         queryData.length === 0 &&
-        error && (
+        error &&
+        isFocused && (
           <div className="bg-white shadow shadow-black/10 p-4 absolute rounded-xl mt-2 w-full">
             <div className="px-2 py-1 rounded cursor-default">
               <p className="font-medium">Not found</p>
