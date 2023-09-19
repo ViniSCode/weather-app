@@ -44,7 +44,6 @@ export function LocationSearchBar() {
     },
   };
 
-  console.log(isFocused);
   return (
     <motion.section
       initial="hidden"
