@@ -82,7 +82,7 @@ export async function getServerSideProps(context) {
 
     try {
       const weatherResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=Tuparendi, BR&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=New York, US&units=metric&appid=${apiKey}`
       );
 
       if (!weatherResponse.ok) {

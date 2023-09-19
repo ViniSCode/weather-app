@@ -44,6 +44,7 @@ export function LocationSearchBar() {
     },
   };
 
+  console.log(isFocused);
   return (
     <motion.section
       initial="hidden"
@@ -91,8 +92,12 @@ export function LocationSearchBar() {
       ) : (
         queryData.length === 0 &&
         error &&
+        search.length > 0 &&
         isFocused && (
-          <div className="bg-white shadow shadow-black/10 p-4 absolute rounded-xl mt-2 w-full">
+          <div
+            className="bg-white shadow shadow-black/10 p-4 absolute rounded-xl mt-2 w-full"
+            ref={searchResultsRef}
+          >
             <div className="px-2 py-1 rounded cursor-default">
               <p className="font-medium">Not found</p>
             </div>

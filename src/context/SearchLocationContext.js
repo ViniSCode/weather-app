@@ -11,7 +11,7 @@ export function SearchLocationContextProvider(props) {
   const [error, setError] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-  const debouncedSearch = useDebounce(search, 1000);
+  const debouncedSearch = useDebounce(search, 400);
 
   async function fetchLocationWeatherData(value) {
     setLoading(true);
@@ -35,6 +35,7 @@ export function SearchLocationContextProvider(props) {
       setLoading(false);
     } catch (error) {
       setError(true);
+      setQueryData([]);
       setLoading(false);
       console.error("Failed to fetch weather data:", error);
     }
