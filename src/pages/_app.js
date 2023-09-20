@@ -1,4 +1,4 @@
-import { LoadingPage } from "@/components/Loading/LoadingPage";
+import { Skeleton } from "@/components/Loading/Skeleton";
 import { SearchLocationContextProvider } from "@/context/SearchLocationContext";
 import "@/styles/globals.css";
 import { useEffect, useState } from "react";
@@ -18,7 +18,9 @@ export default function App({ Component, pageProps, router }) {
 
   return (
     <SearchLocationContextProvider apiKey={pageProps.apiKey}>
-      {isPageLoading && <LoadingPage />}
+      {/* create a skeleton page and replace <LoadingPage />
+      to <SkeletonPage /> which is a copy of index.js page */}
+      {isPageLoading && <Skeleton />}
       <Component {...pageProps} />
     </SearchLocationContextProvider>
   );
