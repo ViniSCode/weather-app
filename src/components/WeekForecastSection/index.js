@@ -1,9 +1,10 @@
-import { getWeatherCode } from "@/utils/weather";
+import getNext7Days, { getWeatherCode } from "@/utils/weather";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export function WeekForecastSection({ weather }) {
+  const sevenDaysWeek = getNext7Days(weather.forecastData.timezone);
   let forecast = weather && weather.forecastData.daily;
 
   const [carouselWidth, setCarouselWidth] = useState(0);
@@ -84,7 +85,7 @@ export function WeekForecastSection({ weather }) {
               variants={item}
               className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
             >
-              <p>{temp.weather[0].main}</p>
+              <p>{sevenDaysWeek[index]}</p>
               <Image
                 src={`/assets/${getWeatherCode(temp.weather[0].id)}.svg`}
                 alt="weather image"
@@ -92,7 +93,7 @@ export function WeekForecastSection({ weather }) {
                 height={45}
                 className="w-11 h-12 lg:w-10 lg:h-8"
               />
-              <p>{temp.feels_like.day.toFixed()}°</p>
+              <p>{`${temp.temp.min.toFixed()}~${temp.temp.max.toFixed()}`}°</p>
             </motion.div>
           );
         })}

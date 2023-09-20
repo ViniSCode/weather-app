@@ -1,12 +1,10 @@
 import { useSearchLocation } from "@/hooks/useSearchLocation";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
-import { useRef } from "react";
+import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { FiSearch } from "react-icons/fi";
 
 export function LocationSearchBar() {
-  const router = useRouter();
-
   const {
     queryData,
     setQueryData,
@@ -44,6 +42,10 @@ export function LocationSearchBar() {
     },
   };
 
+  useEffect(() => {
+    setSearch("");
+  }, []);
+
   return (
     <motion.section
       initial="hidden"
@@ -56,6 +58,7 @@ export function LocationSearchBar() {
         <input
           type="text"
           placeholder="Search for places..."
+          value={search}
           onChange={(e) => setSearch(e.target.value)}
           onBlur={handleBlur}
           onFocus={() => setIsFocused(true)}
@@ -69,23 +72,20 @@ export function LocationSearchBar() {
           className="z-20 bg-white shadow shadow-black/10 p-4 absolute rounded-xl mt-2 w-full"
         >
           {queryData.map((location, index) => (
-            <div
-              onClick={() => {
-                let cityName = `${location.name ? location.name : ""}, ${
-                  location.state ? location.state + "," : ""
-                } ${location.country ? location.country : ""}`;
-
-                router.push(`/${cityName}`);
-              }}
+            <Link
               key={index}
-              className="hover:bg-blue-200 px-2 py-1 rounded cursor-pointer"
-            >
-              <p className="font-medium text-sm">{`${
-                location.name ? location.name : ""
-              }, ${location.state ? location.state + "," : ""} ${
+              href={`${location.name ? location.name : ""}, ${
                 location.country ? location.country : ""
-              }`}</p>
-            </div>
+              }`}
+            >
+              <div className="hover:bg-blue-200 px-2 py-1 rounded cursor-pointer">
+                <p className="font-medium text-sm">{`${
+                  location.name ? location.name : ""
+                }, ${location.state ? location.state + "," : ""} ${
+                  location.country ? location.country : ""
+                }`}</p>
+              </div>
+            </Link>
           ))}
         </div>
       ) : (

@@ -80,3 +80,23 @@ export function TimeConvert(timezone, time) {
 
   return dayTime;
 }
+
+export default function getNext7Days(timezone) {
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  const options = { timeZone: timezone };
+  const now = new Date().toLocaleString("en-US", options);
+  const today = new Date(now);
+
+  const next7Days = [];
+
+  for (let i = 0; i < 8; i++) {
+    const nextDate = new Date(today);
+    nextDate.setDate(today.getDate() + i);
+
+    const dayAbbreviation = daysOfWeek[nextDate.getDay()];
+    next7Days.push(dayAbbreviation);
+  }
+
+  return next7Days;
+}

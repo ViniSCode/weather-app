@@ -14,14 +14,17 @@ export default function App({ Component, pageProps, router }) {
     router.events.on("routeChangeComplete", (url) => {
       setIsPageLoading(false);
     });
+
+    return () => {
+      router.events.off("routeChangeStart", "routeChangeComplete");
+    };
   }, []);
 
   return (
     <SearchLocationContextProvider apiKey={pageProps.apiKey}>
       {/* create a skeleton page and replace <LoadingPage />
       to <SkeletonPage /> which is a copy of index.js page */}
-      {isPageLoading && <Skeleton />}
-      <Component {...pageProps} />
+      {isPageLoading ? <Skeleton /> : <Component {...pageProps} />}
     </SearchLocationContextProvider>
   );
 }
