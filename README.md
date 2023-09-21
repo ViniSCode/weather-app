@@ -23,3 +23,7 @@ Check out the live version of the Weather App at [https://weather-git-redesign-w
 - TailwindCSS
 - RadixUI
 - framer-motion
+
+## Future Enhancements
+
+- Dark mode
