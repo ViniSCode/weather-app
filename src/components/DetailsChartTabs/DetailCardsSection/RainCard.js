@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 export function RainCard({ weather }) {
-  const rain = weather.forecastData.daily[0].pop * 100;
+  const rain = (weather.forecastData.daily[0].pop * 100).toFixed();
 
   return (
     <motion.div

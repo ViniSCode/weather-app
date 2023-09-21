@@ -8,6 +8,8 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 
 export default function Location(props) {
+  console.log(props.weather);
+
   const [formattedDateTime, setFormattedDateTime] = useState(null);
 
   useEffect(() => {
