@@ -1,5 +1,7 @@
 # Weather App
 
+![enter image description here](https://github.com/ViniSCode/weather-app/blob/redesign/weather-app/public/assets/weather-app-preview.png?raw=true)
+
 Welcome to the Weather App! Stay informed about current conditions and upcoming weather changes.
 
 ## Live Demo
