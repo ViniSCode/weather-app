@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { FiSearch } from "react-icons/fi";
+import { MdGpsFixed } from "react-icons/md";
 
 export function LocationSearchBar() {
+  // let currentUserLocation;
+
   const {
     queryData,
     setQueryData,
@@ -16,6 +19,10 @@ export function LocationSearchBar() {
     setError,
     isFocused,
     setIsFocused,
+    location,
+    setLocation,
+    getUserLocation,
+    getUserLocationByLatLon,
   } = useSearchLocation();
 
   const searchResultsRef = useRef(null);
@@ -62,7 +69,11 @@ export function LocationSearchBar() {
           onChange={(e) => setSearch(e.target.value)}
           onBlur={handleBlur}
           onFocus={() => setIsFocused(true)}
-          className="placeholder:text-gray-600 text-black placeholder:font-medium font-medium rounded-full pl-10 pr-4 py-2 z-20 bg-white w-full lg:bg-gray-300 focus:outline-blue-500"
+          className="placeholder:text-xs xxs:placeholder:text-sm sm:placeholder:text-base placeholder:text-gray-600 text-black placeholder:font-medium font-medium rounded-full pl-10 pr-4 py-2 z-20 bg-white w-full lg:bg-gray-300 focus:outline-blue-500"
+        />
+        <MdGpsFixed
+          onClick={getUserLocation}
+          className="cursor-pointer w-5 h-5 absolute z-10 right-2.5 top-1/2 -translate-y-1/2"
         />
       </label>
 
@@ -74,9 +85,9 @@ export function LocationSearchBar() {
           {queryData.map((location, index) => (
             <Link
               key={index}
-              href={`${location.name ? location.name : ""}, ${
-                location.country ? location.country : ""
-              }`}
+              href={`${location.name ? location.name + "," : ""} ${
+                location.state ? location.state + "," : ""
+              } ${location.country ? location.country : ""}`}
             >
               <div className="hover:bg-blue-200 px-2 py-1 rounded cursor-pointer">
                 <p className="font-medium text-sm">{`${

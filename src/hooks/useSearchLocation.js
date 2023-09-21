@@ -13,6 +13,10 @@ export function useSearchLocation() {
     setError,
     isFocused,
     setIsFocused,
+    location,
+    setLocation,
+    getUserLocation,
+    getUserLocationByLatLon,
   } = useContext(SearchLocationContext);
 
   return {
@@ -26,5 +30,9 @@ export function useSearchLocation() {
     setError,
     isFocused,
     setIsFocused,
+    location,
+    setLocation,
+    getUserLocation,
+    getUserLocationByLatLon,
   };
 }
