@@ -1,30 +1,38 @@
 export function getWeatherCode(weatherGroupId) {
-  if (weatherGroupId === 803) {
-    return "overcast";
-  }
-
-  if (weatherGroupId > 802 && weatherGroupId < 805) {
-    return "overcast";
-  }
-
-  if (weatherGroupId === 781) {
-    return "tornado";
-  }
-
-  if (weatherGroupId >= 200 && weatherGroupId < 300) {
-    return "storm";
-  } else if (weatherGroupId >= 300 && weatherGroupId < 400) {
-    return "rain";
-  } else if (weatherGroupId >= 500 && weatherGroupId < 600) {
-    return "rain";
-  } else if (weatherGroupId >= 600 && weatherGroupId < 700) {
-    return "snow";
-  } else if (weatherGroupId >= 700 && weatherGroupId < 800) {
+  if (weatherGroupId > 802 && weatherGroupId < 900) {
     return "cloudy";
+  } else if (weatherGroupId > 802 && weatherGroupId < 805) {
+    return "overcast";
+  } else if (weatherGroupId > 199 && weatherGroupId < 210) {
+    return "storm";
+  } else if (weatherGroupId > 209 && weatherGroupId < 222) {
+    return "thunderstorm";
+  } else if (weatherGroupId > 221 && weatherGroupId < 299) {
+    return "storm";
+  } else if (weatherGroupId > 299 && weatherGroupId < 499) {
+    return "drizzle";
+  } else if (weatherGroupId === 512) {
+    return "snow-rain";
+  } else if (weatherGroupId > 499 && weatherGroupId < 599) {
+    return "rain";
+  } else if (weatherGroupId > 599 && weatherGroupId < 614) {
+    return "snow";
+  } else if (weatherGroupId > 614 && weatherGroupId < 700) {
+    return "snow-rain";
+  } else if (weatherGroupId === 781 || weatherGroupId === 771) {
+    return "tornado";
+  } else if (weatherGroupId === 731 || weatherGroupId === 761) {
+    return "dust";
+  } else if (weatherGroupId === 711) {
+    return "smoke";
+  } else if (weatherGroupId > 700 && weatherGroupId < 741) {
+    return "fog";
+  } else if (weatherGroupId === 751) {
+    return "sand";
   } else if (weatherGroupId === 800) {
     return "clear";
-  } else if (weatherGroupId >= 801 && weatherGroupId < 900) {
-    return "clouds";
+  } else if (weatherGroupId > 800 && weatherGroupId < 803) {
+    return "few";
   } else {
     return "cloudy";
   }

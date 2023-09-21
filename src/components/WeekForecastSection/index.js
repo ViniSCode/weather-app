@@ -93,7 +93,9 @@ export function WeekForecastSection({ weather }) {
                 height={45}
                 className="w-11 h-12 lg:w-10 lg:h-8"
               />
-              <p>{`${temp.temp.min.toFixed()}~${temp.temp.max.toFixed()}`}°</p>
+              <p>
+                {`${temp.temp.max.toFixed()} ~ ${temp.temp.min.toFixed()}`}°
+              </p>
             </motion.div>
           );
         })}

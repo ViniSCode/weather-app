@@ -1,18 +1,15 @@
+import getNext7Days from "@/utils/weather";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Chart from "react-apexcharts";
 
-export default function WeekChart() {
-  const chartFadeIn = {
-    hidden: { opacity: 0, y: "100px" },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: 0.2,
-      },
-    },
-  };
+export default function WeekChart({ weather }) {
+  const sevenDaysWeek = getNext7Days(weather.forecastData.timezone);
+  let forecast =
+    weather &&
+    weather.forecastData.daily.map((temp) =>
+      ((temp.temp.max + temp.temp.min) / 2).toFixed()
+    );
 
   const [chartData, setChartData] = useState({
     options: {
@@ -44,7 +41,7 @@ export default function WeekChart() {
       },
       xaxis: {
         type: "date",
-        categories: ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"],
+        categories: sevenDaysWeek,
       },
       yaxis: {
         show: true,
@@ -53,10 +50,21 @@ export default function WeekChart() {
     series: [
       {
         name: "temperature",
-        data: [18, 22, 10, 15, 25, 20, 15],
+        data: forecast,
       },
     ],
   });
+
+  const chartFadeIn = {
+    hidden: { opacity: 0, y: "100px" },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.2,
+      },
+    },
+  };
 
   return (
     <motion.div initial="hidden" animate="visible" variants={chartFadeIn}>

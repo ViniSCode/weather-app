@@ -24,21 +24,25 @@ export function MainWeatherSection({ weather }) {
       initial="hidden"
       animate="visible"
       variants={container}
-      className="mt-16 lg:mt-8 flex flex-row items-center justify-between gap-10 lg:flex-col lg:items-start"
+      className="mt-16 lg:mt-8 flex flex-row items-center justify-center  gap-2 lg:gap-10 lg:justify-between lg:flex-col lg:items-start"
     >
-      <Image
-        src={`/assets/${weatherImage}.svg`}
-        width={256}
-        height={256}
-        quality={10}
-        priority
-        alt="weather image"
-        className="w-full max-w-[256px] lg:max-w-[200px] xl:max-w-[256px]"
-      />
+      <div>
+        <Image
+          src={`/assets/${weatherImage}.svg`}
+          width={256}
+          height={256}
+          quality={10}
+          priority
+          alt="weather image"
+          className="w-full md:max-w-[256px] lg:max-w-[200px] xl:max-w-[256px]"
+        />
+      </div>
       <div>
         <h3 className="text-7xl xxs:text-[92px] lg:text-7xl flex items-center">
           {weather?.main.temp && weather.main.temp.toFixed()}
-          <span className="text-3xl xxs:text-[50px] lg:text-[40px]">°C</span>
+          <span className="block text-3xl xxs:text-[50px] lg:text-[40px]">
+            °C
+          </span>
         </h3>
         <p className="font-medium mt-0 lg:mt-4 xl:mt-4 xl:text-lg lg:font-semibold">
           {weatherConditions}

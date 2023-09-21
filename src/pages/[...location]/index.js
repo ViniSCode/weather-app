@@ -30,10 +30,6 @@ export default function Location(props) {
     setFormattedDateTime({ todaysDate, dayTime });
   }, []);
 
-  useEffect(() => {
-    console.log("testes");
-  }, []);
-
   return (
     <div className="px-5 min-h-screen max-w-[404px] md:max-w-[632px] mx-auto lg:max-w-full lg:grid lg:pl-0 pr-5 lg:grid-cols-[20rem_auto] gap-10 xl:grid-cols-[26rem_auto]">
       <Head>

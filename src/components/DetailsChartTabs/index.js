@@ -48,7 +48,7 @@ export function DetailsChartTabs({ weather }) {
         <DetailCardsSection weather={weather} />
       </Tabs.Content>
       <Tabs.Content className="mt-8" value="tab2">
-        <DynamicChart />
+        <DynamicChart weather={weather} />
       </Tabs.Content>
     </Tabs.Root>
   );
