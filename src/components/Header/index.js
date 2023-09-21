@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { CelsiusFahrenheit } from "./CelsiusFahrenheit";
 import { CityName } from "./CityName";
 
-export function Header({ weather, formattedDateTime }) {
+export function Header({ weather, formattedDateTime, apiKey }) {
   let cityName = weather.name + ", " + weather.sys.country;
 
   const fadeIn = {
@@ -52,7 +52,7 @@ export function Header({ weather, formattedDateTime }) {
         animate="visible"
         className="flex gap-2"
       >
-        <CelsiusFahrenheit />
+        <CelsiusFahrenheit apiKey={apiKey} />
       </motion.div>
     </header>
   );

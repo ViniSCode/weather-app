@@ -17,6 +17,8 @@ export function useSearchLocation() {
     setLocation,
     getUserLocation,
     getUserLocationByLatLon,
+    units,
+    setUnits,
   } = useContext(SearchLocationContext);
 
   return {
@@ -34,5 +36,7 @@ export function useSearchLocation() {
     setLocation,
     getUserLocation,
     getUserLocationByLatLon,
+    units,
+    setUnits,
   };
 }

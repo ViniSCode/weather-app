@@ -12,6 +12,7 @@ export function SearchLocationContextProvider(props) {
   const [isFocused, setIsFocused] = useState(false);
   const [location, setLocation] = useState(null);
   const debouncedSearch = useDebounce(search, 400);
+
   let currentUserLocation;
 
   async function fetchLocationWeatherData(value) {

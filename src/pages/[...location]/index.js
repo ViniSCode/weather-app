@@ -57,6 +57,7 @@ export default function Location(props) {
           <Header
             weather={props.weather}
             formattedDateTime={formattedDateTime}
+            apiKey={props.apiKey}
           />
         )}
         <main>
@@ -75,6 +76,7 @@ export default function Location(props) {
 
 export async function getServerSideProps(context) {
   const { location } = context.query;
+  const { units } = context.query;
 
   const url =
     process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api/weather";
@@ -84,7 +86,9 @@ export async function getServerSideProps(context) {
 
     try {
       const weatherResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${location[0]}&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${
+          location[0]
+        }&units=${units ? units : "metric"}&appid=${apiKey}`
       );
 
       if (!weatherResponse.ok) {
@@ -94,7 +98,11 @@ export async function getServerSideProps(context) {
       const weatherData = await weatherResponse.json();
 
       const forecastResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&exclude=hourly,minutely&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${
+          weatherData.coord.lat
+        }&lon=${weatherData.coord.lon}&exclude=hourly,minutely&units=${
+          units ? units : "metric"
+        }&appid=${apiKey}`
       );
 
       if (!forecastResponse.ok) {

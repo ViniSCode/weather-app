@@ -57,6 +57,7 @@ export default function Home(props) {
           <Header
             weather={props.weather}
             formattedDateTime={formattedDateTime}
+            apiKey={props.apiKey}
           />
         )}
         <main>
