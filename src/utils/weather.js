@@ -108,3 +108,22 @@ export default function getNext7Days(timezone) {
 
   return next7Days;
 }
+
+export function removeDuplicateLocations(cities) {
+  const uniqueCities = cities.reduce((acc, currentCity) => {
+    const isDuplicate = acc.some(
+      (city) =>
+        city.name === currentCity.name &&
+        city.state === currentCity.state &&
+        city.country === currentCity.country
+    );
+
+    if (!isDuplicate) {
+      acc.push(currentCity);
+    }
+
+    return acc;
+  }, []);
+
+  return uniqueCities;
+}

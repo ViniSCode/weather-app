@@ -1,4 +1,5 @@
 import { useDebounce } from "@/hooks/useDebounce";
+import { removeDuplicateLocations } from "@/utils/weather";
 
 const { createContext, useState, useEffect } = require("react");
 
@@ -33,7 +34,9 @@ export function SearchLocationContextProvider(props) {
       if (data.length === 0) {
         throw new Error("Not Found");
       }
-      setQueryData(data);
+
+      const formattedData = removeDuplicateLocations(data);
+      setQueryData(formattedData);
       setLoading(false);
     } catch (error) {
       setError(true);
