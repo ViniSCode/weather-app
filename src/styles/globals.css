@@ -25,3 +25,37 @@ body {
 img {
   pointer-events: none;
 }
+
+/*SMALL LOADER*/
+.custom-loader {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  color: #00acf8;
+  background: linear-gradient(currentColor 0 0) center/100% 1.5px,
+    linear-gradient(currentColor 0 0) center/1.5px 100%;
+  background-repeat: no-repeat;
+  animation: s8 1s infinite;
+}
+
+.custom-loader::before,
+.custom-loader::after {
+  content: "";
+  grid-area: 1/1;
+  background: repeating-conic-gradient(#0000 0 35deg, currentColor 0 90deg);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(100% - 1.5px),
+    #000 0
+  );
+  border-radius: 50%;
+}
+.custom-loader::after {
+  margin: 20%;
+}
+
+@keyframes s8 {
+  100% {
+    transform: rotate(1turn);
+  }
+}

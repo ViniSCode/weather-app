@@ -61,12 +61,21 @@ export function LocationSearchBar() {
       className="mt-8 lg:mt-0 p-0 lg:full lg:bg-white lg:pb-4 relative"
     >
       <label className="w-full relative h-fit">
-        <FiSearch className="w-5 h-5 absolute z-10 left-2.5 top-1/2 -translate-y-1/2" />
+        {!loading ? (
+          <FiSearch className="w-5 h-5 absolute z-10 left-2.5 top-1/2 -translate-y-1/2" />
+        ) : (
+          <div className="w-5 h-5 absolute z-10 left-2.5 top-1/2 -translate-y-1/2">
+            <div className="custom-loader"></div>
+          </div>
+        )}
         <input
           type="text"
           placeholder="Search for places..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setLoading(true);
+          }}
           onBlur={handleBlur}
           onFocus={() => setIsFocused(true)}
           className="placeholder:text-xs xxs:placeholder:text-sm sm:placeholder:text-base placeholder:text-gray-600 text-black placeholder:font-medium font-medium rounded-full pl-10 pr-4 py-2 z-20 bg-white w-full lg:bg-gray-300 focus:outline-blue-500"
