@@ -12,7 +12,7 @@ export function SearchLocationContextProvider(props) {
   const [error, setError] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [location, setLocation] = useState(null);
-  const debouncedSearch = useDebounce(search, 400);
+  const debouncedSearch = useDebounce(search, 400, setLoading);
 
   let currentUserLocation;
 

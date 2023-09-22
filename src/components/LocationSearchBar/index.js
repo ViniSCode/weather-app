@@ -51,7 +51,6 @@ export function LocationSearchBar() {
 
   useEffect(() => {
     setSearch("");
-    setLoading(false);
   }, []);
 
   return (
@@ -75,7 +74,6 @@ export function LocationSearchBar() {
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
-            setLoading(true);
           }}
           onBlur={handleBlur}
           onFocus={() => setIsFocused(true)}
