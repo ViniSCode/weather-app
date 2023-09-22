@@ -24,7 +24,7 @@ export function MainWeatherSection({ weather }) {
       initial="hidden"
       animate="visible"
       variants={container}
-      className="mt-16 lg:mt-8 flex flex-row items-center justify-center  gap-2 lg:gap-10 lg:justify-between lg:flex-col lg:items-start"
+      className="mt-16 lg:mt-8 flex flex-row items-center justify-center  gap-2 lg:gap-5 lg:justify-between lg:flex-col lg:items-start"
     >
       <div>
         <Image
