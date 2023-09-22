@@ -6,7 +6,7 @@ Welcome to the Weather App! Stay informed about current conditions and upcoming 
 
 ## Live Demo
 
-Check out the live version of the Weather App at [https://weather-git-redesign-weather-app-viniscode.vercel.app/](https://todays-weather-app.vercel.app/)
+Check out the live version of the Weather App at [https://todays-weather-app.vercel.app/](https://todays-weather-app.vercel.app/)
 
 ## Features
 
