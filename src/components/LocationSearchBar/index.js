@@ -51,6 +51,7 @@ export function LocationSearchBar() {
 
   useEffect(() => {
     setSearch("");
+    setLoading(false);
   }, []);
 
   return (
