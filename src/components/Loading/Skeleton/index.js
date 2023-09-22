@@ -117,16 +117,18 @@ export function Skeleton() {
               </section>
             </div>
             <div>
-              <section className="animate-pulse mt-16 lg:mt-8 flex flex-row items-center justify-between gap-10 lg:flex-col lg:items-start">
-                <Image
-                  src={`/assets/weather-skeleton.svg`}
-                  width={256}
-                  height={256}
-                  quality={10}
-                  priority
-                  alt="weather image"
-                  className="w-full max-w-[256px] lg:max-w-[200px] xl:max-w-[256px] rounded-xl"
-                />
+              <section className="mt-16 lg:mt-8 flex flex-row items-center justify-center  gap-2 lg:gap-10 lg:justify-between lg:flex-col lg:items-start">
+                <div>
+                  <Image
+                    src={`/assets/weather-skeleton.svg`}
+                    width={256}
+                    height={256}
+                    quality={10}
+                    priority
+                    alt="weather image"
+                    className="w-full max-w-[256px] lg:max-w-[200px] xl:max-w-[256px] rounded-xl"
+                  />
+                </div>
                 <div>
                   <h3 className="bg-gray-350 text-gray-350 rounded-xl text-7xl xxs:text-[92px] lg:text-7xl flex items-center">
                     27
@@ -134,7 +136,7 @@ export function Skeleton() {
                       °C
                     </span>
                   </h3>
-                  <p className="bg-gray-350 text-gray-350 rounded-xl font-medium mt-0 lg:mt-4 xl:mt-4 xl:text-lg lg:font-semibold">
+                  <p className="mt-2 bg-gray-350 text-gray-350 rounded-xl font-medium lg:mt-4 xl:mt-4 xl:text-lg lg:font-semibold">
                     Clear
                   </p>
                 </div>
