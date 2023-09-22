@@ -1,39 +1,31 @@
-# 🚀 See the app running [ Weather App](https://weather-xi-flax.vercel.app/)
-## JS, Chart.JS, OpenWeatherMapApi, HTML, CSS,
+# Weather App
 
-# Layout
+![enter image description here](https://github.com/ViniSCode/weather-app/blob/redesign/weather-app/public/assets/weather-app-preview.png?raw=true)
 
-![enter image description here](https://github.com/ViniSCode/weather-app/blob/main/assets/weather-prev.png?raw=true)
+Welcome to the Weather App! Stay informed about current conditions and upcoming weather changes.
 
-## Functionalities
-- Search location
+## Live Demo
 
-- Weather
+Check out the live version of the Weather App at [https://weather-git-redesign-weather-app-viniscode.vercel.app/](https://weather-git-redesign-weather-app-viniscode.vercel.app/)
 
-- Forecast
+## Features
 
-- Forecast Chart
+- Detailed weather information including temperature, humidity, precipitation, wind speed, and more.
+- Week-long forecast.
+- Interactive chart to visualize forecast temperatures.
+- Option to switch between Celsius and Fahrenheit temperature scales.
+- Location search functionality.
+- Accessibility features implemented using Radix UI.
 
-  
+## Technologies Used
 
-## Technologies
-
+- Next.js
 - OpenWeatherMap API
+- ApexCharts
+- TailwindCSS
+- RadixUI
+- framer-motion
 
-- HTML
+## Future Enhancements
 
-- CSS
-
-- Javascript
-
-- ChartJS
-
-- SweetAlert2
-
-## 🚀 See the app running [Here](https://weather-xi-flax.vercel.app/)
-
-  
-
-### Get in touch: 👇
-
-[![InstagramBadge](https://img.shields.io/badge/-@rodriguesvini.dev-D60187?style=flat-square&labelColor=D60187&logo=instagram&logoColor=white&link=https://instagram.com/rodriguesvini.dev)](https://instagram.com/rodriguesvini.dev) [![Linkedin Badge](https://img.shields.io/badge/-Vinicius%20Rodrigues-1B63F5?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/vinicius-rodrigues-5897831b8/)](https://www.linkedin.com/in/vinicius-rodrigues-5897831b8/)
+- Dark mode
