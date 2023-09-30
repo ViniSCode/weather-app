@@ -22,8 +22,6 @@ export default function App({ Component, pageProps, router }) {
 
   return (
     <SearchLocationContextProvider apiKey={pageProps.apiKey}>
-      {/* create a skeleton page and replace <LoadingPage />
-      to <SkeletonPage /> which is a copy of index.js page */}
       {isPageLoading ? <Skeleton /> : <Component {...pageProps} />}
     </SearchLocationContextProvider>
   );

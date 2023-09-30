@@ -93,8 +93,8 @@ export function WeekForecastSection({ weather }) {
                 height={45}
                 className="w-11 h-12 lg:w-10 lg:h-8"
               />
-              <p>
-                {`${temp.temp.max.toFixed()} ~ ${temp.temp.min.toFixed()}`}°
+              <p className="text-sm">
+                {`${temp.temp.max.toFixed()} ~ ${temp.temp.min.toFixed()}`}
               </p>
             </motion.div>
           );
@@ -103,111 +103,3 @@ export function WeekForecastSection({ weather }) {
     </section>
   );
 }
-
-/*
-
-        <motion.div
-          variants={item}
-          className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
-        >
-          <p>Sun</p>
-          <Image
-            src="/assets/clear.svg"
-            alt="weather image"
-            width={45}
-            height={45}
-            className="w-11 h-12 lg:w-10 lg:h-8"
-          />
-          <p>32°</p>
-        </motion.div>
-
-        <motion.div
-          variants={item}
-          className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
-        >
-          <p>Sun</p>
-          <Image
-            src="/assets/rain.svg"
-            alt="weather image"
-            width={45}
-            height={45}
-            className="w-11 h-12 lg:w-10 lg:h-8"
-          />
-          <p>32°</p>
-        </motion.div>
-
-        <motion.div
-          variants={item}
-          className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
-        >
-          <p>Sun</p>
-          <Image
-            src="/assets/cloudy.svg"
-            alt="weather image"
-            width={45}
-            height={45}
-            className="w-11 h-12 lg:w-10 lg:h-8"
-          />
-          <p>32°</p>
-        </motion.div>
-
-        <motion.div
-          variants={item}
-          className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
-        >
-          <p>Sun</p>
-          <Image
-            src="/assets/storm.svg"
-            alt="weather image"
-            width={45}
-            height={45}
-            className="w-11 h-12 lg:w-10 lg:h-8"
-          />
-          <p>32°</p>
-        </motion.div>
-
-        <motion.div
-          variants={item}
-          className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
-        >
-          <p>Sun</p>
-          <Image
-            src="/assets/clear.svg"
-            alt="weather image"
-            width={45}
-            height={45}
-            className="w-11 h-12 lg:w-10 lg:h-8"
-          />
-          <p>32°</p>
-        </motion.div>
-
-        <motion.div
-          variants={item}
-          className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
-        >
-          <p>Sun</p>
-          <Image
-            src="/assets/clear.svg"
-            alt="weather image"
-            width={45}
-            height={45}
-            className="w-11 h-12 lg:w-10 lg:h-8"
-          />
-          <p>32°</p>
-        </motion.div>
-
-        <motion.div
-          variants={item}
-          className="bg-white font-medium min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
-        >
-          <p>Sun</p>
-          <Image
-            src="/assets/clear.svg"
-            alt="weather image"
-            width={45}
-            height={45}
-            className="w-11 h-12 lg:w-10 lg:h-8"
-          />
-          <p>32°</p>
-        </motion.div>
-*/
