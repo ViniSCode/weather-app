@@ -1,8 +1,13 @@
 import { getWeatherCode } from "@/utils/weather";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export function MainWeatherSection({ weather }) {
+  const router = useRouter();
+
+  let tempUnit = router.query.units === "imperial" ? "F" : "C";
+
   const container = {
     hidden: { opacity: 0, x: "-20px" },
     visible: {
@@ -41,7 +46,7 @@ export function MainWeatherSection({ weather }) {
         <h3 className="text-7xl xxs:text-[92px] lg:text-7xl flex items-center">
           {weather?.main.temp && weather.main.temp.toFixed()}
           <span className="block text-3xl xxs:text-[50px] lg:text-[40px]">
-            °C
+            °{tempUnit}
           </span>
         </h3>
         <p className="font-medium mt-0 lg:mt-4 xl:mt-4 xl:text-lg lg:font-semibold">
