@@ -4,17 +4,25 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export function WeekForecastSection({ weather }) {
-  const sevenDaysWeek = getNext7Days(weather.forecastData.timezone);
-  let forecast = weather && weather.forecastData.daily;
-
+  const forecast =
+    (weather && weather.forecastData && weather.forecastData.daily) || [];
+  const sevenDaysWeek = getNext7Days(
+    weather?.forecastData?.timezone,
+    forecast.length || 7,
+  );
+  const isFew = forecast.length < 7;
+  const cardClass = isFew
+    ? "font-medium bg-white min-w-[140px] rounded-xl w-36 p-3 flex flex-col gap-3 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[220px]"
+    : "font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]";
   const [carouselWidth, setCarouselWidth] = useState(0);
   const [isDragging, setIsDragging] = useState(0);
   const slideRef = useRef(null);
+  const containerClass = `${isFew ? "lg:justify-center lg:gap-8" : "lg:justify-between"} ${isDragging && "cursor-grabbing"}`;
 
   useEffect(() => {
     if (slideRef.current) {
       setCarouselWidth(
-        slideRef.current.scrollWidth - slideRef.current.offsetWidth
+        slideRef.current.scrollWidth - slideRef.current.offsetWidth,
       );
     }
   }, []);
@@ -74,17 +82,11 @@ export function WeekForecastSection({ weather }) {
         initial="hidden"
         animate="visible"
         variants={container}
-        className={`mt-8 flex gap-4 w-full cursor-grab lg:cursor-default lg:overflow-auto lg:justify-between ${
-          isDragging && "cursor-grabbing"
-        }`}
+        className={`mt-8 flex gap-4 w-full cursor-grab lg:cursor-default lg:overflow-auto ${containerClass}`}
       >
         {forecast.map((temp, index) => {
           return (
-            <motion.div
-              key={index}
-              variants={item}
-              className="font-medium bg-white min-w-[95px] rounded-xl w-24 p-2 flex flex-col gap-2 items-center lg:w-full lg:h-full lg:min-w-0 lg:max-w-[126px]"
-            >
+            <motion.div key={index} variants={item} className={cardClass}>
               <p>{sevenDaysWeek[index]}</p>
               <Image
                 src={`/assets/${getWeatherCode(temp.weather[0].id)}.svg`}

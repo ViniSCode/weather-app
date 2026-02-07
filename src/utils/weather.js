@@ -78,35 +78,47 @@ export function getVisibilityStatus(visibility) {
 }
 
 export function TimeConvert(timezone, time) {
-  const dayTimeInfo = {
-    timeZone: timezone,
-    hour: "numeric",
-    minute: "numeric",
-  };
-  const date = new Date(time * 1000); // Convert to milliseconds
-  const dayTime = date.toLocaleString("en-US", dayTimeInfo);
+  const opts = { hour: "numeric", minute: "numeric" };
+  const date = new Date(time * 1000);
 
-  return dayTime;
+  if (typeof timezone === "number") {
+    const utcMs = date.getTime() + date.getTimezoneOffset() * 60000;
+    const localMs = utcMs + timezone * 1000;
+    const localDate = new Date(localMs);
+    return localDate.toLocaleTimeString("en-US", opts);
+  }
+
+  const dayTimeInfo = { timeZone: timezone, ...opts };
+  return date.toLocaleString("en-US", dayTimeInfo);
 }
 
-export default function getNext7Days(timezone) {
+export default function getNext7Days(timezone, count = 7) {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  const options = { timeZone: timezone };
-  const now = new Date().toLocaleString("en-US", options);
-  const today = new Date(now);
+  let today;
+  if (typeof timezone === "number") {
+    const utcMs = Date.now() + new Date().getTimezoneOffset() * 60000;
+    const localMs = utcMs + timezone * 1000;
+    today = new Date(localMs);
+  } else if (typeof timezone === "string" && timezone) {
+    const options = { timeZone: timezone };
+    const now = new Date().toLocaleString("en-US", options);
+    today = new Date(now);
+  } else {
+    today = new Date();
+  }
 
-  const next7Days = [];
+  const nextDays = [];
 
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < count; i++) {
     const nextDate = new Date(today);
     nextDate.setDate(today.getDate() + i);
 
     const dayAbbreviation = daysOfWeek[nextDate.getDay()];
-    next7Days.push(dayAbbreviation);
+    nextDays.push(dayAbbreviation);
   }
 
-  return next7Days;
+  return nextDays;
 }
 
 export function removeDuplicateLocations(cities) {
@@ -115,7 +127,7 @@ export function removeDuplicateLocations(cities) {
       (city) =>
         city.name === currentCity.name &&
         city.state === currentCity.state &&
-        city.country === currentCity.country
+        city.country === currentCity.country,
     );
 
     if (!isDuplicate) {

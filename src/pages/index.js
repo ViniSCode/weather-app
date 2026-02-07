@@ -11,22 +11,27 @@ export default function Home(props) {
   const [formattedDateTime, setFormattedDateTime] = useState(null);
 
   useEffect(() => {
-    const dateInfo = {
-      timeZone: props.weather.forecastData.timezone,
-      weekday: "short",
-      day: "numeric",
-      month: "long",
-    };
-    const dayTimeInfo = {
-      timeZone: props.weather.forecastData.timezone,
-      weekday: "long",
-      hour: "numeric",
-      minute: "numeric",
-    };
+    const tz = props?.weather?.forecastData?.timezone;
     const date = new Date();
-    const todaysDate = date.toLocaleString("en-US", dateInfo);
-    const dayTime = date.toLocaleString("en-US", dayTimeInfo);
-    setFormattedDateTime({ todaysDate, dayTime });
+
+    const toLocaleSafe = (dateObj, tzValue, options) => {
+      const opts = { ...options };
+      delete opts.timeZone;
+
+      if (typeof tzValue === "number") {
+        const utcMs = dateObj.getTime() + dateObj.getTimezoneOffset() * 60000;
+        const localMs = utcMs + tzValue * 1000;
+        return new Date(localMs).toLocaleString("en-US", opts);
+      }
+
+      return dateObj.toLocaleString("en-US", { ...opts, timeZone: tzValue });
+    };
+
+    const dateInfo = { weekday: "short", day: "numeric", month: "long" };
+    const dayTimeInfo = { weekday: "long", hour: "numeric", minute: "numeric" };
+
+    const todaysDate = toLocaleSafe(date, tz, dateInfo);
+    const dayTime = toLocaleSafe(date, tz, dayTimeInfo);
     setFormattedDateTime({ todaysDate, dayTime });
   }, []);
 
@@ -83,25 +88,84 @@ export async function getServerSideProps(context) {
 
     try {
       const weatherResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=New York, US&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=New York&units=metric&appid=${apiKey}`,
       );
 
       if (!weatherResponse.ok) {
+        const errorData = await weatherResponse.text();
+        console.error("Weather API error:", weatherResponse.status, errorData);
         throw new Error("Something went wrong while fetching weather");
       }
 
       const weatherData = await weatherResponse.json();
 
+      // Use the free 5-day / 3-hour forecast endpoint and aggregate into daily summaries
       const forecastResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&exclude=hourly,minutely&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&units=metric&appid=${apiKey}`,
       );
 
       if (!forecastResponse.ok) {
+        const errorData = await forecastResponse.text();
+        console.error(
+          "Forecast API error:",
+          forecastResponse.status,
+          errorData,
+        );
         throw new Error("Something went wrong while fetching forecast data");
       }
 
-      const forecastData = await forecastResponse.json();
+      const forecastJson = await forecastResponse.json();
 
+      // Aggregate 3-hourly entries into daily summaries (max/min, representative weather)
+      const groups = {};
+      (forecastJson.list || []).forEach((item) => {
+        const date = new Date(item.dt * 1000).toISOString().slice(0, 10);
+        groups[date] = groups[date] || [];
+        groups[date].push(item);
+      });
+
+      const daily = Object.keys(groups)
+        .slice(0, 7)
+        .map((date) => {
+          const items = groups[date];
+          const temps = items
+            .map((i) => i.main && i.main.temp)
+            .filter((t) => typeof t === "number");
+          const min = temps.length ? Math.min(...temps) : null;
+          const max = temps.length ? Math.max(...temps) : null;
+          const midday = items[Math.floor(items.length / 2)];
+          const pops = items.map((i) =>
+            typeof i.pop === "number"
+              ? i.pop
+              : i.pop === 0
+                ? 0
+                : i.rain || i.snow
+                  ? 1
+                  : 0,
+          );
+          const pop = pops.length ? Math.max(...pops) : 0;
+
+          return {
+            dt: Math.floor(new Date(date).getTime() / 1000),
+            date,
+            temp: { min, max },
+            pop,
+            weather:
+              midday && midday.weather
+                ? midday.weather
+                : [{ id: 800, main: "Clear", description: "clear sky" }],
+            items,
+          };
+        });
+
+      const forecastData = {
+        ...forecastJson,
+        daily,
+        timezone:
+          forecastJson.city?.timezone ||
+          forecastJson.timezone ||
+          weatherData.timezone,
+      };
       const weather = {
         ...weatherData,
         forecastData,
@@ -118,7 +182,7 @@ export async function getServerSideProps(context) {
 
       return {
         props: {
-          weatherError,
+          weatherError: weatherError.message || "Failed to fetch weather data",
         },
       };
     }
